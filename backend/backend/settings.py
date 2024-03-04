@@ -71,6 +71,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
+# REST Framework
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthenticaiton',
+    ],
+}
+
+## Authentication
+AUTH_USER_MODEL = 'authentication.CustomUser'
+
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
