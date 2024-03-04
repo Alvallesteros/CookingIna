@@ -1,0 +1,131 @@
+:root {
+    --main-bg-color: #FDEEDC;
+    --main-red: #E64848;
+    --main-font: 'TT Norms Pro'
+}
+
+.bg {
+    background-color: var(--main-bg-color);
+    display: flex;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
+}
+
+.form-container {
+    background-color: white;
+    display: flex;
+    position: relative;
+    justify-content: flex-start;
+    width: 70%;
+    height: 83%;
+    margin: auto;
+    flex-shrink: 1;
+    box-shadow: 
+        0px 37px 82px rgba(0, 0, 0, 0.10),
+        0px 148px 148px rgba(0, 0, 0, 0.09),
+        0px 334px 200px rgba(0, 0, 0, 0.05),
+        0px 593px 237px rgba(0, 0, 0, 0.01);
+    border-radius: 5vh;
+    z-index: 0;
+}
+
+.logo-container {
+    background-color: var(--main-red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 0;
+    margin-top: 0;
+    height: 100%;
+    width: 58%;
+    border-radius: 5vh 0 0 5vh;
+    z-index: 5;
+}
+
+
+.right-container {
+    display: block;
+    width: 42%;
+    z-index: 3;
+    height: 100%
+}
+
+.shadow {
+    background-image: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0) 100%);
+    position: absolute;
+    height: 100%;
+    width: 5%;
+    z-index: 5;
+}
+
+.welcome {
+    width: 70%;
+    height: 8%;
+    background-image: linear-gradient(90deg, #D71D1D 0%, #E64848 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 3;
+    left: 0;
+    top: 5%;
+    border-radius: 0 5vh 5vh 0;
+}
+
+.button {
+    width: 74%;
+    height: 8%;
+    background-image: linear-gradient(90deg, #D71D1D 0%, #E64848 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    top: 8%;
+    border-radius: 5vh 5vh 5vh 5vh;
+    z-index: 3;
+}
+
+.logo {
+    width: 68%;
+
+}
+
+.logo-container h1 {
+    font-family: "TT Norms Pro", sans-serif;
+    font-weight: 800;
+    color: white;
+    font-size: 7vh;
+    top: 0;
+    margin-top: 0;
+}
+
+.welcome p {
+    font-family: "TT Norms Pro", sans-serif;
+    font-weight: 700;
+    color: white;
+    font-size: 4vh;
+}
+
+.button p {
+    font-family: "TT Norms Pro", sans-serif;
+    font-weight: 700;
+    color: white;
+    font-size: 4vh;
+}
+
+.creds-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 33%;
+    background-color: red;
+    margin-top: 31%;
+}
