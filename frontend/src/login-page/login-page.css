@@ -75,6 +75,11 @@
     left: 0;
     top: 5%;
     border-radius: 0 5vh 5vh 0;
+    box-shadow: 
+        0px 12px 26px rgba(0, 0, 0, 0.10),
+        0px 47px 47px rgba(0, 0, 0, 0.09), 
+        0px 106px 64px rgba(0, 0, 0, 0.05),
+        0px 189px 76px rgba(0, 0, 0, 0.01);
 }
 
 .button {
@@ -125,7 +130,57 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: 33%;
-    background-color: red;
     margin-top: 31%;
+}
+
+.creds-container p {
+    font-family: 'TT Norms Pro', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    font-size: 4vh;
+    margin-top:  0;
+}
+
+.input {
+    border: none;
+    border-bottom: 1.5px solid gray;
+    margin-bottom: 5%;
+    width: 72%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-family: 'TT Norms Pro', sans-serif;
+    font-size: 3vh;
+    font-weight: 300;
+    color: #000;
+    outline: none;
+}
+.input::placeholder {
+    font-family: 'TT Norms Pro', sans-serif;
+    font-size: 3vh;
+    font-weight: 300;
+    color: #000;
+}
+
+.sign-up-container {
+    font-family: 'TT Norms Pro', sans-serif;
+    background-color: rgba(255, 0, 0, 0.00);
+    margin-top: 22%;
+    position: relative;
+    text-align: center;
+}
+
+.sign-up-container p {
+    font-size: 2.5vh;
+    font-weight: 300;
+    line-height: 2vh;
+    margin-bottom: 0%;
+    margin-top: 4%;
+}
+
+.sign-up-container #sign-up {
+    font-weight: 700;
+    color: var(--main-red)
 }

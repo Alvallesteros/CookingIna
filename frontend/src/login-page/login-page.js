@@ -16,9 +16,15 @@ const LoginPage = () => {
                     </div>
                     <div className="creds-container">
                         <p>Login to your account:</p>
+                        <input type="text" className="input" placeholder="Username" />
+                        <input type="password" className="input" placeholder="Password" />
                     </div>
                     <div className="button">
                         <p>Login</p>
+                    </div>
+                    <div className='sign-up-container'>
+                        <p>Don't have an account?</p>
+                        <p id='sign-up'>Sign-Up</p>
                     </div>
                 </div>
             </div>
