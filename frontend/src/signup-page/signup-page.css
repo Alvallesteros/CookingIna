@@ -115,7 +115,7 @@
     font-weight: 700;
     text-align: center;
     font-size: 4vh;
-    margin-top:  10%;
+    margin-top: 10%;
   }
   
   .input {
@@ -155,7 +155,7 @@
       margin-top: 3%;
   }
   
-  .login-container #sign-up {
+  .login-container #login {
       font-weight: 700;
       color: var(--main-red)
   }

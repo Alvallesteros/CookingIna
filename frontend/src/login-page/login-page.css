@@ -47,7 +47,6 @@
     z-index: 5;
 }
 
-
 .right-container {
     display: block;
     width: 42%;
@@ -100,7 +99,6 @@
 
 .logo {
     width: 68%;
-
 }
 
 .logo-container h1 {
@@ -159,6 +157,7 @@
     color: #000;
     outline: none;
 }
+
 .input::placeholder {
     font-family: 'TT Norms Pro', sans-serif;
     font-size: 3vh;
