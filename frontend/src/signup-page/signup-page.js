@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './signup-page.css';
+
 
 const SignupPage = () => {
 
     const [formData, setFormData] = useState({
         username: '',
-        password: ''
+        email: '',
+        password: '',
     });
+    const [passConfirm, setPassConfirm] = useState({confirmPassword: '',})
+    const [passwordsMatch, setPasswordsMatch] = useState(true); 
 
 
     const handleChange = (e) => {
@@ -15,13 +20,23 @@ const SignupPage = () => {
             ...formData,
             [name]: value
         });
+        setPassConfirm({
+            [name]: value
+        })
     };
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch('http://localhost:8000/api/signup/', {
+        if (formData.password !== passConfirm.confirmPassword) {
+            setPasswordsMatch(false);
+            return;
+        } else {
+            setPasswordsMatch(true);
+        };
+
+        fetch('http://localhost:8000/api/registration/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -60,19 +75,21 @@ const SignupPage = () => {
                             <p>Sign up for an account:</p>
                             <input 
                                 type = "text" 
-                                nam = "username"
+                                name = "username"
                                 className = "input" 
                                 placeholder = "Username"
                                 value={ formData.username }
-                                onChange={handleChange}                             
+                                onChange={handleChange}   
+                                required                          
                             />
                             <input
                                 type = "text"
                                 name = "email"
                                 className = "input"
                                 placeholder = "Email"
-                                value = { formData.username }
+                                value = { formData.email }
                                 onChange = {handleChange}
+                                required    
                             />
                             <input 
                                 type = "password" 
@@ -81,14 +98,19 @@ const SignupPage = () => {
                                 placeholder = "Password" 
                                 value = { formData.password }
                                 onChange = {handleChange}
+                                required
                             />
+                            {!passwordsMatch && 
+                                <div className="error" id="password">Password does not match</div>
+                            }
                             <input
                                 type = "password" 
-                                name = "confirm-password"
+                                name = "confirmPassword"
                                 class = "input" 
                                 placeholder = "Confirm Password" 
-                                value = { formData.password }
+                                value = { passConfirm.confirmPassword }
                                 onChange = {handleChange}
+                                required
                             />
                         </div>
                         <div className="button" onClick={handleSubmit}>
@@ -97,7 +119,7 @@ const SignupPage = () => {
                     </form>
                     <div className='login-container'>
                         <p>Already have an account?</p>
-                        <p id='login'>Login</p>
+                        <p><Link to='/login'>Login</Link></p>
                     </div>
                 </div>
             </div>
