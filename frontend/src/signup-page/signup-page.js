@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './signup-page.css';
 
 
 const SignupPage = () => {
+
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         username: '',
@@ -69,7 +71,7 @@ const SignupPage = () => {
         ).then(
             data => {
                 console.log('Success: ', data)
-                return <Navigate to="/profile" />;  
+                navigate('/profile'); 
             }
         ).catch(
             error => {
@@ -93,29 +95,29 @@ const SignupPage = () => {
 
     return  (
         <div className = "bg">
-            <div className = "form-container">
-                <div class = "logo-container">
+            <div className = "signup_form-container">
+                <div class = "signup_logo-container">
                     <img className = 'logo' src="/Logo.svg" alt = "Logo" />
                     <h1>CookingIna</h1>
                 </div>
-                <div className = "right-container">
-                    <div className = "shadow"></div>
+                <div className = "signup_right-container">
+                    <div className = "signup_shadow"></div>
                     <form>
-                        <div className="creds-container">
+                        <div className="signup_creds-container">
                             <p>Sign up for an account:</p>
                             {blankError &&
-                                <div className='error'>Please Fill All Fields.</div>
+                                <div className='signup_error'>Please Fill All Fields.</div>
                             }
                             {defaultError &&
-                                <div className='error'>An Unknown Error Occurred.</div>
+                                <div className='signup_error'>An Unknown Error Occurred.</div>
                             }
                             {usernameError && 
-                                <div className="error">Username Already Exists</div>
+                                <div className="signup_error">Username Already Exists</div>
                             }
                             <input 
                                 type = "text" 
                                 name = "username"
-                                className = {`input ${submitted && !formData.username ? 'empty-field': ''}`}
+                                className = {`signup_input ${submitted && !formData.username ? 'signup_empty-field': ''}`}
                                 placeholder = "Username"
                                 value={ formData.username }
                                 onChange={handleChange}   
@@ -127,7 +129,7 @@ const SignupPage = () => {
                             <input
                                 type = "text"
                                 name = "email"
-                                className = {`input ${submitted && !formData.email ? 'empty-field': ''}`}
+                                className = {`signup_input ${submitted && !formData.email ? 'signup_empty-field': ''}`}
                                 placeholder = "Email"
                                 value = { formData.email }
                                 onChange = {handleChange}
@@ -136,30 +138,30 @@ const SignupPage = () => {
                             <input 
                                 type = "password" 
                                 name = "password"
-                                className = {`input ${submitted && !formData.password ? 'empty-field': ''}`} 
+                                className = {`signup_input ${submitted && !formData.password ? 'signup_empty-field': ''}`} 
                                 placeholder = "Password" 
                                 value = { formData.password }
                                 onChange = {handleChange}
                                 required
                             />
                             {!passwordsMatch && 
-                                <div className="error" id="password">Password does not match</div>
+                                <div className="signup_error" id="password">Password does not match</div>
                             }
                             <input
                                 type = "password" 
                                 name = "confirmPassword"
-                                class = {`input ${submitted && !passConfirm.confirmPassword ? 'empty-field': ''}`}
+                                class = {`signup_input ${submitted && !passConfirm.confirmPassword ? 'signup_empty-field': ''}`}
                                 placeholder = "Confirm Password" 
                                 value = { passConfirm.confirmPassword }
                                 onChange = {handleChange}
                                 required
                             />
                         </div>
-                        <div className="button" onClick={handleSubmit}>
+                        <div className="signup_button" onClick={handleSubmit}>
                             <p>Sign Up</p>
                         </div>
                     </form>
-                    <div className='login-container'>
+                    <div className='signup_login-container'>
                         <p>Already have an account?</p>
                         <p><Link to='/login'>Login</Link></p>
                     </div>
