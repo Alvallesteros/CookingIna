@@ -4,8 +4,6 @@ from authentication.models import CustomUser
 class User(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     profile_picture = models.ImageField(upload_to='profile_pictures/', default='default_profile_picture.jpg')
-    username = models.CharField(max_length=150, unique=True)
-    password = models.CharField(max_length=128)
     viewed_recipes = models.JSONField(default=list, blank=True)
     user_recipe_ids = models.JSONField(default=list)
     ingredient_preferences = models.JSONField(default=list)
