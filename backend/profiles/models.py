@@ -10,7 +10,6 @@ class User(models.Model):
     ingredient_user_ids = models.JSONField(default=list)
     created_recipes = models.JSONField(default=list)
     role = models.CharField(max_length=50, choices=[('User', 'User'), ('Admin', 'Admin'), ('Moderator', 'Moderator')], default='User')
-    auth_token = models.CharField(max_length=256, unique=True)
 
     def __str__(self):
-        return self.username
+        return self.user.username
