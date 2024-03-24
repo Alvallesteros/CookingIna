@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import CustomUser
+from authentication.models import CustomUser
 
 class User(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
