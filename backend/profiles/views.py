@@ -9,18 +9,19 @@ from .permissions import IsOwner
 class UserProfileUpdateView(generics.UpdateAPIView):
     # to update
     # permission_classes = [IsAuthenticated, IsOwner]
+    queryset = UserProfile.objects
     permission_classes = [permissions.AllowAny]
     serializer_class = UserProfileSerializer
     pass
 
-class UserProfileView(generics.RetrieveAPIView):
+class UserProfileDetailView(generics.RetrieveAPIView):
     queryset = UserProfile.objects
     serializer_class = UserProfileSerializer
     permission_classes = [permissions.AllowAny]
     pass
 
-class ProfileCreationView(generics.CreateAPIView):
-    
+class UserProfileCreateView(generics.CreateAPIView):
+    queryset = UserProfile.objects
     serializer_class = UserProfileSerializer
     permission_classes = [permissions.AllowAny]
 

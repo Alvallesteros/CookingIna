@@ -7,7 +7,7 @@ class UserProfile(models.Model):
     first_name = models.TextField(blank=True)
     last_name = models.TextField(blank=True)
     birthday = models.DateField(blank=True)
-    mobile_number = PhoneNumberField()
+    mobile_number = PhoneNumberField(blank=True)
     biography = models.TextField(blank=True)
     profile_picture = models.ImageField(upload_to='profile_pictures/', default='default_profile_picture.jpg')
     viewed_recipes = models.JSONField(default=list, blank=True)

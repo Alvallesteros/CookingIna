@@ -4,9 +4,9 @@ from .models import UserProfile
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
-        fields = ['first_name', 'last_name', 'mobile_number', 'birthday', 'profile_picture', 'biography']
+        fields = ['first_name', 'last_name', 'mobile_number', 'birthday', 'profile_picture', 'biography', 'user']
         read_only_fields = ['id', 'role']
-
+    
     def create(self, validated_data):
         profile = UserProfile.objects.create(**validated_data)
         return profile
