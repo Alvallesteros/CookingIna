@@ -7,9 +7,10 @@ class CustomUser(AbstractUser):
     # Your custom fields here
     pass
 
-def create_profile(sender, instance, created):
-    if created:
-        profile = UserProfile.objects.create(user=instance)
-        profile.save()
+# alternative method: using signals to create new profile for each created user
+# def create_profile(sender, instance, created):
+#     if created:
+#         profile = UserProfile.objects.create(user=instance)
+#         profile.save()
 
-post_save.connect(create_profile, CustomUser)
+# post_save.connect(create_profile, CustomUser)
