@@ -1,0 +1,333 @@
+:root {
+    --main-bg-color: #FDEEDC;
+    --main-red: #E64848;
+    --main-font: 'TT Norms Pro'
+}
+
+body {
+    margin: 0;
+    font-family: var(--main-font);
+}
+
+.bg {
+    background-color: var(--main-bg-color);
+    height: 350vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: -1;
+}
+
+.navbar {
+    background: var(--main-red);
+    position: fixed;
+    top: 0;
+    overflow: hidden;
+    height: 6vh;
+    width: 100vw;
+    font-family: var(--main-font);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    padding-left: 2vw;
+}
+
+.logo {
+    width: 30%;
+    margin-right: 1vw;
+}
+
+.logo-text {
+    color: white;
+    font-weight: 900;
+}
+
+.navbar-ul {
+    list-style-type: none;
+    display: flex;
+}
+
+.navbar-ul li {
+    margin-right: 2vw;
+}
+
+.navbar-ul a {
+    color: white;
+    text-decoration: none;
+    font-size: 2vh;
+    font-weight: 700;
+}
+
+.red-rectangle {
+    width: 100vw;
+    height: 25vh;
+    background-color: var(--main-red);
+    z-index: 0;
+}
+
+.user-image-container {
+    background-color: white;
+    height: 16rem;
+    width: 16rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: 3vh;
+    transform: translateY(-18vh);
+    box-shadow: 
+        0px 195px 55px 0px rgba(0, 0, 0, 0.00), 
+        0px 125px 50px 0px rgba(0, 0, 0, 0.01), 
+        0px 70px 42px 0px rgba(0, 0, 0, 0.05), 
+        0px 31px 31px 0px rgba(0, 0, 0, 0.09), 
+        0px 8px 17px 0px rgba(0, 0, 0, 0.10);
+    z-index: 1;
+}
+
+.user-image {
+    /* remove background and border radius when using image */
+    background: gray;
+    height: 15rem;
+    width: 15rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.main-container {
+    background-color: white;
+    height: auto;
+    width: 80vw;
+    border-radius: 45px;
+    padding-top: 23vh;
+    padding-bottom: 3vh;
+    transform: translateY(-37vh);
+    z-index: 0;
+}
+
+.details-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 1;
+}
+
+.details-top h1 {
+    font-weight: 700;
+    font-size: 3vh;
+}
+
+.details-top h3 {
+    font-weight: 300;
+    font-size: 2vh;
+}
+
+.details-top .button {
+    background-image: linear-gradient(90deg, #D71D1D 0%, #E64848 100%);
+    width: 10%;
+    color: white;
+    font-size: 2.5vh;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 60px;
+    margin-top: 1%;
+    padding: 0.5% 3% 0.5% 3%;
+}
+
+.details-middle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+    padding-bottom: 5vh;
+}
+
+.general-info, .user-credentials {
+    width: 48%;
+    background-color: rgb(250, 250, 250);
+    border-radius: 25px;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 1%;
+}
+
+.general-info {
+    padding-bottom: 9.5%;
+}
+
+.user-credentials {
+    padding-bottom: 4%;
+}
+
+.general-info h1, .user-credentials h1 {
+    color: var(--main-red);
+    font-size: 3vh;
+}
+
+.general-info label, .user-credentials label {
+    font-weight: 400;
+}
+
+.general-info input, .user-credentials input {
+    width: 80%;
+    padding: 0.5rem;
+}
+
+.general-info .button, .user-credentials .button {
+    background-image: linear-gradient(90deg, #D71D1D 0%, #E64848 100%);
+    width: 30%;
+    color: white;
+    font-size: 2vh;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 60px;
+    margin-top: 1%;
+    padding: 1% 5% 1% 5%;
+}
+
+.details-bottom {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+    margin: auto;
+    width: 90%;
+}
+
+.biography, .account-management {
+    background-color: rgb(250, 250, 250);
+    border-radius: 25px;
+    padding-bottom: 3vh;
+    margin-bottom: 5vh;
+}
+
+.biography h1, .account-management h1 {
+    color: var(--main-red);
+    font-size: 3vh;
+}
+
+.biography input {
+    height: 10vh;
+    width: 80%;
+    padding: 0.5rem;
+    margin-bottom: 3vh;
+}
+
+.biography .button, .account-management .button {
+    background-image: linear-gradient(90deg, #D71D1D 0%, #E64848 100%);
+    width: 30%;
+    color: white;
+    font-size: 2vh;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 60px;
+    margin-top: 1%;
+    padding: 1% 0.5rem 1% 0.5rem;
+    margin: auto;
+}
+
+.account-management h3 {
+    font-weight: 300;
+    font-size: 2vh;
+}
+
+input[type=text] {
+    border: 0.5px solid #8F8F8F;
+    border-radius: 15px;
+}
+
+.favorite-recipes-text {
+    display: flex;
+    align-items: center;
+    width: 80vw;
+    transform: translateY(-25vh);
+}
+
+.favorite-recipes-text h1 {
+    font-size: 4vh;
+    color: var(--main-red);
+    padding-left: 1.5rem;
+    margin: 0;
+}
+
+.created-recipes-text {
+    display: flex;
+    align-items: center;
+    width: 80vw;
+    transform: translateY(-23vh);
+    margin-top: 2rem;
+}
+
+.created-recipes-text h1 {
+    font-size: 4vh;
+    color: var(--main-red);
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.recipe-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 80vw;
+    transform: translateY(-25vh);
+}
+
+.card {
+    background-color: white;
+    border-radius: 15px;
+    height: 20vh;
+    width: calc(25% - 10px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-top: 3vh;
+}
+
+.card-image {
+    background-color: gray;
+    height: 100%;
+    width: 100%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    object-fit: cover;
+}
+
+.card-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-content h3 {
+    flex: 1;
+    margin-left: 10px;
+    font-size: 2vh;
+    color: var(--main-red);
+    font-weight: 700;
+}
+
+.card-content p {
+    margin-right: 5px;
+    font-size: 2vh;
+    font-weight: 300;
+}
