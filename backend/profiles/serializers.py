@@ -17,5 +17,6 @@ class UserProfileSerializer(serializers.ModelSerializer):
         instance.mobile_number = validated_data.get('mobile_number', instance.mobile_number)
         instance.birthday = validated_data.get('birthday', instance.birthday)
         instance.profile_picture = validated_data.get('profile_picture', instance.profile_picture)
+        instance.biography = validated_data.get('biography', instance.biography)
         instance.save()
         return instance
