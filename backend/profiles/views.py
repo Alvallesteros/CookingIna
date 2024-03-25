@@ -8,7 +8,8 @@ from .permissions import IsOwner
 
 class UserProfileUpdateView(generics.UpdateAPIView):
     # to update
-    permission_classes = [IsAuthenticated, IsOwner]
+    # permission_classes = [IsAuthenticated, IsOwner]
+    permission_classes = [permissions.AllowAny]
     serializer_class = UserProfileSerializer
     pass
 
