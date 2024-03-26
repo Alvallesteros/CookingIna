@@ -7,14 +7,13 @@ const UserProfilePage = () => {
 
 
     return (
-        <div>
             <div className="bg">
                 <nav className="navbar">
                     <div className="logo-container">
-                        <img alt="Logo" className="logo" />
+                        <img alt="Logo" src="/Logo.svg"className="logo" />
                         <span className="logo-text">CookingIna</span>
                     </div>
-                    <ul cclassNamelass="navbar-ul">
+                    <ul className="navbar-ul">
                         <li>
                             <a href="#home">Home</a>
                         </li>
@@ -30,7 +29,7 @@ const UserProfilePage = () => {
                     </ul>
                 </nav>
 
-                <div clclassNameass="red-rectangle"></div>
+                <div className="red-rectangle"></div>
 
                 <div className="user-image-container">
                     <div className="user-image"></div>
@@ -38,7 +37,6 @@ const UserProfilePage = () => {
 
                 <div className="main-container">
                     <div className="details-top">
-
                         <div className="user-name-username">
                             <h1>FirstName LastName</h1>
                             <h3>@username</h3>
@@ -50,36 +48,36 @@ const UserProfilePage = () => {
                     <div className="details-middle">
                         <div className = "general-info">
                             <h1>General Information</h1>
-                            <label for="first-name">First Name</label>
-                            <input type="text" id="first-name" name="first-name" maxlength="10"/><br/>
-                            <label for="last-name">Last Name</label>
-                            <input type="text" id="last-name" name="last-name" maxlength="10"/><br/>
-                            <label for="mobile-number">Mobile Number</label>
-                            <input type="text" id="mobile-number" name="mobile-number" maxlength="12"/><br/>
-                            <label for="birthdate">Birthdate</label>
-                            <input type="text" id="birthdate" name="birthdate" maxlength="10"/><br/>
-                            <div class="button">Save Changes</div>
+                            <label htmlFor="first-name">First Name</label>
+                            <input type="text" id="first-name" name="first-name" maxLength="10"/><br/>
+                            <label htmlFor="last-name">Last Name</label>
+                            <input type="text" id="last-name" name="last-name" maxLength="10"/><br/>
+                            <label htmlFor="mobile-number">Mobile Number</label>
+                            <input type="text" id="mobile-number" name="mobile-number" maxLength="12"/><br/>
+                            <label htmlFor="birthdate">Birthdate</label>
+                            <input type="text" id="birthdate" name="birthdate" maxLength="10"/><br/>
+                            <div className="button">Save Changes</div>
                         </div>
 
                         <div className = "user-credentials">
                             <h1>User Credentials</h1>
-                            <label for="email">Email</label>
-                            <input type="text" id="email" name="email" maxlength="20"/><br/>
-                            <div class="button">Verify Email</div><br/>
-                            <label for="username">Username</label>
-                            <input type="text" id="username" name="username" maxlength="20"/><br/>
-                            <label for="password">Password</label>
-                            <input type="text" id="password" name="password" maxlength="20"/><br/>
-                            <label for="confirm-password">Confirm Password</label>
-                            <input type="text" id="confirm-password" name="confirm-password" maxlength="20"/><br/>
-                            <div class="button">Save Changes</div>
+                            <label htmlFor="email">Email</label>
+                            <input type="text" id="email" name="email" maxLength="20"/><br/>
+                            <div className="button">Verify Email</div><br/>
+                            <label htmlFor="username">Username</label>
+                            <input type="text" id="username" name="username" maxLength="20"/><br/>
+                            <label htmlFor="password">Password</label>
+                            <input type="text" id="password" name="password" maxLength="20"/><br/>
+                            <label htmlFor="confirm-password">Confirm Password</label>
+                            <input type="text" id="confirm-password" name="confirm-password" maxLength="20"/><br/>
+                            <div className="button">Save Changes</div>
                         </div>  
                     </div>
 
                     <div className="details-bottom">
                         <div className="biography">
                             <h1>Biography</h1>
-                            <input type="text" id="biography" name="biography" maxlength="100"/>
+                            <input type="text" id="biography" name="biography" maxLength="100"/>
                             <div className="button">Save Changes</div>
                         </div>
         
@@ -90,7 +88,7 @@ const UserProfilePage = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            
 
             <div className="favorite-recipes-text">
                 <img alt="Star" className="star-icon"/>
