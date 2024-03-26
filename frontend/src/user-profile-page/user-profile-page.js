@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './user-profile-page.css';
+import UploadPhoto from './uploadPhoto';
 
 const UserProfilePage = () => {
 
@@ -10,6 +11,35 @@ const UserProfilePage = () => {
     const [profile, setProfile] = useState(null);
     const [editProfile, setEditProfile] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
+    const [updatePic, setUpdatePic] = useState(false);
+
+    const handleUpload = async (file) => {
+        try {
+            const formData = new FormData();
+            // Append other fields along with the file
+            formData.append('profile_picture', file);
+            formData.append('first_name', profile.first_name);
+            formData.append('last_name', profile.last_name);
+            formData.append('mobile_number', profile.mobile_number);
+            formData.append('birthday', profile.birthday);
+            formData.append('biography', profile.biography);
+            formData.append('user', profile.user);
+            // Make a PUT request to upload the file along with other fields
+            const response = await fetch(`http://localhost:8000/api/profile/${username}/update`, {
+                method: 'PUT',
+                body: formData,
+            });
+            if (response.ok) {
+                console.log('Profile updated successfully.');
+                fetchProfile(username);
+            } else {
+                console.error('Failed to update profile:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error updating profile:', error.message);
+        }
+    };
+
 
     const toggleEditing = () => {
         setIsEditing(!isEditing);
@@ -75,6 +105,12 @@ const UserProfilePage = () => {
 
     return (
             <div className="profile bg">
+                <UploadPhoto
+                    updatePic={updatePic}
+                    setUpdatePic={setUpdatePic}
+                    handleUpload={handleUpload}
+                    username={username}
+                />
                 <nav className="profile navbar">
                     <div className="profile logo-container">
                         <img alt="Logo" src="/Logo.svg"className="profile logo" />
@@ -99,7 +135,7 @@ const UserProfilePage = () => {
                 <div className="profile red-rectangle"></div>
 
                 <div className="profile user-image-container">
-                    <div className="profile user-image" style={{ backgroundImage: `url(${profile.profile_picture})` }}>
+                    <div className="profile user-image" onClick={() => setUpdatePic(true)} style={{ backgroundImage: `url(${profile.profile_picture})` }}>
                     </div>
                 </div>
 

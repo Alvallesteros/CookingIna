@@ -102,6 +102,11 @@ body {
     object-fit: cover;
     background-position: center;
     background-size: cover;
+    cursor: pointer;
+}
+
+.profile.user-image:hover {
+    filter: brightness(75%);
 }
 
 .profile.main-container {

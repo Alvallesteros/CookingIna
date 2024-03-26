@@ -1,0 +1,81 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+  
+  .modal-main {
+    position: fixed;
+    background-color: white;
+    width: auto;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2em;
+    padding-left: 5em;
+    padding-right: 5em;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .modal-main h2 {
+    color: var(--main-red);
+    margin: auto;
+    margin-bottom: 1em;
+  }
+
+  input[type='file'] {
+    display: none;
+  }
+
+  .image-preview {
+    height: 40vh;
+    object-fit: cover;
+    object-position: center center;
+    width: 40vh;
+    border-radius: 100%;
+  }
+  
+  /* Style the custom button or text */
+  .custom-file-button {
+    margin-top: 1em;
+    background-image: linear-gradient(90deg, #D71D1D 0%, #E64848 100%);
+    width: auto;
+    color: white;
+    font-size: 2vh;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 60px;
+    padding: 0.5em 2em 0.5em 2em;
+    cursor: pointer;
+  }
+
+  .modal-main .button {
+    margin-top: 1em;
+    background-image: linear-gradient(90deg, #D71D1D 0%, #E64848 100%);
+    width: auto;
+    color: white;
+    font-size: 2vh;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 60px;
+    margin-top: 1%;
+    padding: 0.5em 2em 0.5em 2em;
+    cursor: pointer;
+  }
+  
+  .display-block {
+    display: block;
+  }
+  
+  .display-none {
+    display: none;
+  }
+  

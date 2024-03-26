@@ -37,11 +37,6 @@ class UserProfileCreateView(generics.CreateAPIView):
     queryset = UserProfile.objects
     serializer_class = UserProfileSerializer
     permission_classes = [permissions.AllowAny]
-    
-    def get_object(self):
-        username = self.kwargs.get('username')
-        user = CustomUser.objects.get(username=username)
-        return UserProfile.objects.get(user=user)
 
     def post(self, request):
         serializer = UserProfileSerializer(data=request.data)
