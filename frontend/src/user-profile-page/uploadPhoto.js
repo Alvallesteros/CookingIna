@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './uploadPhoto.css'; // Import CSS file for modal styles
 
-const UploadPhoto = ({ updatePic, setUpdatePic, handleUpload, username }) => {
+const UploadPhoto = ({ updatePic, setUpdatePic, handleUpload }) => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
 
@@ -20,35 +20,8 @@ const UploadPhoto = ({ updatePic, setUpdatePic, handleUpload, username }) => {
         setImagePreview(null);
       }
     };
-  const handleSubmit = async () => {
-    try {
-        if (!selectedFile) {
-          console.error('No file selected.');
-          return;
-        }
-  
-        // Create FormData object
-        const formData = new FormData();
-        formData.append('profile_picture', selectedFile);
-  
-        // Make PUT request to the backend
-        const response = await fetch(`http://localhost:8000/api/profile/${username}/update`, {
-          method: 'PUT',
-          body: formData,
-        });
-  
-        if (response.ok) {
-          console.log('Profile picture updated successfully.');
-          // Close the modal
-          setUpdatePic(false);
-          // Reload profile data
-          handleUpload(selectedFile);
-        } else {
-          console.error('Failed to update profile picture:', response.statusText);
-        }
-      } catch (error) {
-        console.error('Error while updating profile picture:', error);
-      }
+  const handleSubmit = () => {
+    // Pass the selected file to the parent component for handling
     handleUpload(selectedFile);
     // Close the modal
     setUpdatePic(false);

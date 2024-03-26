@@ -20,6 +20,7 @@ const SignupPage = () => {
     const [submitted, setSubmitted] = useState(false);
     const [defaultError, setDefaultError] = useState(false);
     const [blankError, setBlankError] = useState(false);
+    const [newUser, setNewUser] = useState(true);
 
 
     const handleChange = (e) => {
@@ -71,7 +72,7 @@ const SignupPage = () => {
         ).then(
             data => {
                 console.log('Success: ', data)
-                navigate('/profile'); 
+                navigate(`/profile/${formData.username}`, {state: {data: newUser}}); 
             }
         ).catch(
             error => {

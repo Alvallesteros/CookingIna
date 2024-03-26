@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './user-profile-page.css';
 import UploadPhoto from './uploadPhoto';
@@ -12,6 +13,11 @@ const UserProfilePage = () => {
     const [editProfile, setEditProfile] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
     const [updatePic, setUpdatePic] = useState(false);
+    const location = useLocation();
+    const [isCreating, setIsCreating] = useState(false);
+    const [user, setUser] = useState(null);
+    const [profilePic, setProfilePic] = useState('/default_profpic.png');
+    let picFile;
 
     const handleUpload = async (file) => {
         try {
@@ -40,20 +46,17 @@ const UserProfilePage = () => {
         }
     };
 
-
     const toggleEditing = () => {
         setIsEditing(!isEditing);
         setEditProfile(JSON.parse(JSON.stringify(profile)));
     };
 
-    useEffect(() => {
-        fetchProfile(username);
-    }, [username]);
-
     const fetchProfile = async(username) => {
         try {
             const response = await fetch(`http://localhost:8000/api/profile/${username}/`);
             if(!response.ok) {
+                setIsCreating(true);
+                toggleEditing();
                 throw new Error("Failed to fetch profile");
             }
             const data = await response.json();
@@ -63,9 +66,32 @@ const UserProfilePage = () => {
         }
     };
 
-    if (!profile) {
+    useEffect(() => {
+        if(!isCreating){
+            fetchProfile(username);
+        }
+    }, [username]);
+
+
+    if (!profile && !isCreating) {
         return <div>Loading...</div>;
     }
+
+    const handleFileChange = (e) => {
+        const selectedFile = e.target.files[0];
+        if (selectedFile) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setProfilePic(reader.result);
+            };
+            reader.readAsDataURL(selectedFile);
+        }
+        picFile = selectedFile;
+    };
+
+    const handleProfilePicClick = () => {
+        document.getElementById('fileInput').click();
+    };
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -103,6 +129,56 @@ const UserProfilePage = () => {
         }
     };
 
+    const createNewProfile = async () => {
+        try {
+            const userResponse = await fetch(`http://localhost:8000/api/search-user/${username}/`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            
+            if (!userResponse.ok) {
+                throw new Error('Failed to fetch user data');
+            }
+            const userData = await userResponse.json();
+            
+            setUser(userData);
+            console.log(userData);
+    
+            // Then create a new profile
+            const profileData = new FormData();
+            profileData.append('first_name', document.getElementById('first_name').value);
+            profileData.append('last_name', document.getElementById('last_name').value);
+            profileData.append('mobile_number', document.getElementById('mobile_number').value);
+            profileData.append('birthday', document.getElementById('birthday').value);
+            profileData.append('biography', document.getElementById('biography').value);
+            profileData.append('user', userData.user_id);
+    
+            // Check if a file has been selected for profile picture
+            const profilePictureInput = document.getElementById('profile_picture');
+            if (profilePictureInput.files.length > 0) {
+                profileData.append('profile_picture', profilePictureInput.files[0]);
+            }
+    
+            const response = await fetch(`http://localhost:8000/api/profile/create/`, {
+                method: 'POST',
+                body: profileData,
+            });
+    
+            if (response.ok) {
+                window.location.reload();
+            } else {
+                throw new Error('Failed to save changes: ' + response.statusText);
+            }
+        } catch (error) {
+            console.error('Error while creating profile:', error.message);
+        }
+    };
+    
+    
+    
+
     return (
             <div className="profile bg">
                 <UploadPhoto
@@ -135,33 +211,51 @@ const UserProfilePage = () => {
                 <div className="profile red-rectangle"></div>
 
                 <div className="profile user-image-container">
-                    <div className="profile user-image" onClick={() => setUpdatePic(true)} style={{ backgroundImage: `url(${profile.profile_picture})` }}>
-                    </div>
+                        {isCreating ? (
+                        <div className='profile pic-container'>
+                            <input
+                                type="file"
+                                id="profile_picture"
+                                accept="image/*"
+                                onChange={handleFileChange}
+                                style={{ display: 'block', opacity: 0, width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, cursor: 'pointer' }}
+                            />
+                            <div
+                                className="profile user-image"
+                                style={{ backgroundImage: `url(${profilePic})` }}
+                                onClick={handleProfilePicClick}
+                            ></div>
+                        </div>
+                    ) : (
+                        <div className="profile user-image" onClick={() => setUpdatePic(true)} style={{ backgroundImage: profile && profile.profile_picture ? `url(${profile.profile_picture})` : '/default_profpic.png' }}></div>
+                    )}
                 </div>
 
                 <div className="profile main-container">
-                    <div className="profile details-top">
-                        <div className="profile user-name-username">
-                            <h1>{ profile.first_name } { profile.last_name }</h1>
-                            <h3>@{ username }</h3>
-                            <p>{ profile.biography }</p>
+                    {!isCreating && (
+                        <div className="profile details-top">
+                            <div className="profile user-name-username">
+                                <h1>{ profile.first_name } { profile.last_name }</h1>
+                                <h3>@{ username }</h3>
+                                <p>{ profile.biography }</p>
+                            </div>
+                            {!isEditing && <div className="profile button" onClick={toggleEditing}>Edit Profile</div>}
                         </div>
-                        {!isEditing && <div className="profile button" onClick={toggleEditing}>Edit Profile</div>}
-                    </div>
+                    )}
                     {isEditing && (
                         <div className='profile edit'>
                             <div className="profile details-middle">
                                 <div className="profile general-info">
                                     <h1>General Information</h1>
                                     <label htmlFor="first_name">First Name</label>
-                                    <input type="text" id="first_name" name="first_name" maxLength="32" defaultValue={editProfile.first_name} onChange={handleInputChange} required/><br/>
+                                    <input type="text" id="first_name" name="first_name" maxLength="32" defaultValue={editProfile && editProfile.first_name ? editProfile.first_name : ''} onChange={handleInputChange} required/><br/>
                                     <label htmlFor="last_name">Last Name</label>
-                                    <input type="text" id="last_name" name="last_name" maxLength="32" defaultValue={editProfile.last_name} onChange={handleInputChange} required/><br/>
+                                    <input type="text" id="last_name" name="last_name" maxLength="32" defaultValue={editProfile && editProfile.last_name ? editProfile.last_name : ''} onChange={handleInputChange} required/><br/>
                                     <label htmlFor="mobile_number">Mobile Number</label>
-                                    <input type="text" id="mobile_number" name="mobile_number" maxLength="32" defaultValue={editProfile.mobile_number} onChange={handleInputChange} required/><br/>
+                                    <input type="text" id="mobile_number" name="mobile_number" maxLength="32" defaultValue={editProfile && editProfile.mobile_number ? editProfile.mobile_number : ''} onChange={handleInputChange} required/><br/>
                                     <label htmlFor="birthday">Birthdate</label>
-                                    <input type="text" id="birthday" name="birthday" maxLength="32" defaultValue={editProfile.birthday} onChange={handleInputChange} required/><br/>
-                                    <div className="profile button" onClick={handleSaveChanges}>Save Changes</div>
+                                    <input type="text" id="birthday" name="birthday" maxLength="32" defaultValue={editProfile && editProfile.birthday ? editProfile.birthday : ''} onChange={handleInputChange} required/><br/>
+                                    <div className="profile button" onClick={profile ? handleSaveChanges : createNewProfile}>Save Changes</div>
                                 </div>
 
                                 <div className="profile user-credentials">
@@ -182,8 +276,8 @@ const UserProfilePage = () => {
                             <div className="profile details-bottom">
                                 <div className="profile biography">
                                     <h1>Biography</h1>
-                                    <textarea type="text" id="biography" name="biography" maxLength="250" defaultValue={editProfile.biography} onChange={handleInputChange} required/>
-                                    <div className="profile button" onClick={handleSaveChanges}>Save Changes</div>
+                                    <textarea type="text" id="biography" name="biography" maxLength="250" defaultValue={editProfile && editProfile.biography ? editProfile.biography : ''} onChange={handleInputChange} required/>
+                                    <div className="profile button" onClick={profile ? handleSaveChanges : createNewProfile}>Save Changes</div>
                                 </div>
                             </div>
                         </div>

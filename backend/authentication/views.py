@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate
 from .serializers import UserSerializer
+from django.contrib.auth import get_user_model
 
 class UserRegistrationView(generics.CreateAPIView):
     serializer_class = UserSerializer
@@ -27,3 +28,14 @@ class UserLoginView(APIView):
             return Response({'token': token.key})
         else:
             return Response({'error': 'Invalid credentials'}, status=401)
+
+class SearchUserIdByUsername(APIView):
+    permission_classes = [permissions.AllowAny]  # Adjust permissions as needed
+
+    def get(self, request, username):
+        User = get_user_model()
+        try:
+            user = User.objects.get(username=username)
+            return Response({'user_id': user.pk})  # Return the primary key of the user
+        except User.DoesNotExist:
+            return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
