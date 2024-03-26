@@ -6,6 +6,7 @@ from authentication.models import CustomUser
 from .models import UserProfile
 from .serializers import UserProfileSerializer
 from .permissions import IsOwner
+from django.http import Http404
 
 class UserProfileCreateView(generics.CreateAPIView):
     queryset = UserProfile.objects
@@ -52,7 +53,12 @@ class UserProfileDeleteView(generics.DestroyAPIView):
 
     def get_object(self):
         username = self.kwargs.get('username')
-        user = CustomUser.objects.get(username=username)
-        return UserProfile.objects.get(user=user)
+        try:
+            user = CustomUser.objects.get(username=username)
+            return UserProfile.objects.get(user=user)
+        except CustomUser.DoesNotExist:
+            raise Http404("User does not exist")
+        except UserProfile.DoesNotExist:
+            raise Http404("UserProfile does not exist")
     
     pass
