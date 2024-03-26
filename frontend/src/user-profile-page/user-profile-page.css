@@ -298,6 +298,14 @@ body {
     border-radius: 15px;
 }
 
+.profile textarea {
+    border: 0.5px solid #8F8F8F;
+    border-radius: 15px;
+    width: 90%;
+    padding: 1em;
+    font-family: var(--main-font);
+}
+
 .profile.favorite-recipes-text {
     display: flex;
     align-items: center;

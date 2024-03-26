@@ -8,6 +8,13 @@ const UserProfilePage = () => {
 
     const { username } = useParams();
     const [profile, setProfile] = useState(null);
+    const [editProfile, setEditProfile] = useState(null);
+    const [isEditing, setIsEditing] = useState(false);
+
+    const toggleEditing = () => {
+        setIsEditing(!isEditing);
+        setEditProfile(JSON.parse(JSON.stringify(profile)));
+    };
 
     useEffect(() => {
         fetchProfile(username);
@@ -30,7 +37,41 @@ const UserProfilePage = () => {
         return <div>Loading...</div>;
     }
 
-    console.log(profile)
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setEditProfile(prevEditProfile => ({
+            ...prevEditProfile,
+            [name]: value
+        }));
+    };
+
+    const handleSaveChanges = async() => {
+        try {
+            const response = await fetch(`http://localhost:8000/api/profile/${username}/update`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    first_name: document.getElementById('first_name').value,
+                    last_name: document.getElementById('last_name').value,
+                    mobile_number: document.getElementById('mobile_number').value,
+                    birthday: document.getElementById('birthday').value,
+                    biography: document.getElementById('biography').value,
+                    user: profile.user
+                    // Add other fields as needed
+                }),
+            });
+            if (response.ok) {
+                // Refresh the page upon successful submission
+                window.location.reload();
+            } else {
+                console.error('Failed to save changes:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error while saving changes:', error.message);
+        }
+    };
 
     return (
             <div className="profile bg">
@@ -69,47 +110,48 @@ const UserProfilePage = () => {
                             <h3>@{ username }</h3>
                             <p>{ profile.biography }</p>
                         </div>
-
-                        <div className="profile button">Edit Profile</div>
+                        {!isEditing && <div className="profile button" onClick={toggleEditing}>Edit Profile</div>}
                     </div>
-                    <div className='hidden profile edit'>
-                        <div className="profile details-middle">
-                            <div className="profile general-info">
-                                <h1>General Information</h1>
-                                <label htmlFor="first-name">First Name</label>
-                                <input type="text" id="first-name" name="first-name" maxLength="10"/><br/>
-                                <label htmlFor="last-name">Last Name</label>
-                                <input type="text" id="last-name" name="last-name" maxLength="10"/><br/>
-                                <label htmlFor="mobile-number">Mobile Number</label>
-                                <input type="text" id="mobile-number" name="mobile-number" maxLength="12"/><br/>
-                                <label htmlFor="birthdate">Birthdate</label>
-                                <input type="text" id="birthdate" name="birthdate" maxLength="10"/><br/>
-                                <div className="profile button">Save Changes</div>
+                    {isEditing && (
+                        <div className='profile edit'>
+                            <div className="profile details-middle">
+                                <div className="profile general-info">
+                                    <h1>General Information</h1>
+                                    <label htmlFor="first_name">First Name</label>
+                                    <input type="text" id="first_name" name="first_name" maxLength="32" defaultValue={editProfile.first_name} onChange={handleInputChange} required/><br/>
+                                    <label htmlFor="last_name">Last Name</label>
+                                    <input type="text" id="last_name" name="last_name" maxLength="32" defaultValue={editProfile.last_name} onChange={handleInputChange} required/><br/>
+                                    <label htmlFor="mobile_number">Mobile Number</label>
+                                    <input type="text" id="mobile_number" name="mobile_number" maxLength="32" defaultValue={editProfile.mobile_number} onChange={handleInputChange} required/><br/>
+                                    <label htmlFor="birthday">Birthdate</label>
+                                    <input type="text" id="birthday" name="birthday" maxLength="32" defaultValue={editProfile.birthday} onChange={handleInputChange} required/><br/>
+                                    <div className="profile button" onClick={handleSaveChanges}>Save Changes</div>
+                                </div>
+
+                                <div className="profile user-credentials">
+                                    <h1>User Credentials</h1>
+                                    <label htmlFor="email">Email</label>
+                                    <input type="text" id="email" name="email" maxLength="20"/><br/>
+                                    <div className="profile button">Verify Email</div><br/>
+                                    <label htmlFor="username">Username</label>
+                                    <input type="text" id="username" name="username" maxLength="20"/><br/>
+                                    <label htmlFor="password">Password</label>
+                                    <input type="text" id="password" name="password" maxLength="20"/><br/>
+                                    <label htmlFor="confirm-password">Confirm Password</label>
+                                    <input type="text" id="confirm-password" name="confirm-password" maxLength="20"/><br/>
+                                    <div className="profile button">Save Changes</div>
+                                </div>  
                             </div>
 
-                            <div className="profile user-credentials">
-                                <h1>User Credentials</h1>
-                                <label htmlFor="email">Email</label>
-                                <input type="text" id="email" name="email" maxLength="20"/><br/>
-                                <div className="profile button">Verify Email</div><br/>
-                                <label htmlFor="username">Username</label>
-                                <input type="text" id="username" name="username" maxLength="20"/><br/>
-                                <label htmlFor="password">Password</label>
-                                <input type="text" id="password" name="password" maxLength="20"/><br/>
-                                <label htmlFor="confirm-password">Confirm Password</label>
-                                <input type="text" id="confirm-password" name="confirm-password" maxLength="20"/><br/>
-                                <div className="profile button">Save Changes</div>
-                            </div>  
-                        </div>
-
-                        <div className="profile details-bottom">
-                            <div className="profile biography">
-                                <h1>Biography</h1>
-                                <input type="text" id="biography" name="biography" maxLength="100"/>
-                                <div className="profile button">Save Changes</div>
+                            <div className="profile details-bottom">
+                                <div className="profile biography">
+                                    <h1>Biography</h1>
+                                    <textarea type="text" id="biography" name="biography" maxLength="250" defaultValue={editProfile.biography} onChange={handleInputChange} required/>
+                                    <div className="profile button" onClick={handleSaveChanges}>Save Changes</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    )}
                     <div className="hidden profile account-management">
                                 <h1>Account Management</h1>
                                 <h3>If you would like to delete your account and personal data associated with it, click the button below.</h3>
