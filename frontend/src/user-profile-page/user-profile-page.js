@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './user-profile-page.css';
 import UploadPhoto from './uploadPhoto';
+import ConfirmationModal from './confirmation';
 
 const UserProfilePage = () => {
 
@@ -17,6 +18,8 @@ const UserProfilePage = () => {
     const [isCreating, setIsCreating] = useState(false);
     const [user, setUser] = useState(null);
     const [profilePic, setProfilePic] = useState('/default_profpic.png');
+    const [confirmModal, setConfirmModal] = useState(false);
+    const navigate = useNavigate();
     let picFile;
 
     const handleUpload = async (file) => {
@@ -146,7 +149,6 @@ const UserProfilePage = () => {
             setUser(userData);
             console.log(userData);
     
-            // Then create a new profile
             const profileData = new FormData();
             profileData.append('first_name', document.getElementById('first_name').value);
             profileData.append('last_name', document.getElementById('last_name').value);
@@ -155,7 +157,6 @@ const UserProfilePage = () => {
             profileData.append('biography', document.getElementById('biography').value);
             profileData.append('user', userData.user_id);
     
-            // Check if a file has been selected for profile picture
             const profilePictureInput = document.getElementById('profile_picture');
             if (profilePictureInput.files.length > 0) {
                 profileData.append('profile_picture', profilePictureInput.files[0]);
@@ -177,7 +178,26 @@ const UserProfilePage = () => {
     };
     
     
-    
+    const handleDelete = async () => {
+        try {
+            const response = await fetch(`http://localhost:8000/api/profile/${username}/delete`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            
+            if (response.ok) {
+                console.log('Profile deleted successfully');
+            } else {
+                console.error('Failed to delete profile:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error while deleting profile:', error.message);
+        }
+        navigate('/login')
+        
+    };
 
     return (
             <div className="profile bg">
@@ -186,6 +206,12 @@ const UserProfilePage = () => {
                     setUpdatePic={setUpdatePic}
                     handleUpload={handleUpload}
                     username={username}
+                />
+                <ConfirmationModal
+                    isOpen={confirmModal}
+                    message="Are you sure you want to delete?"
+                    onCancel={() => setConfirmModal(false)}
+                    onConfirm={handleDelete}
                 />
                 <nav className="profile navbar">
                     <div className="profile logo-container">
@@ -282,10 +308,10 @@ const UserProfilePage = () => {
                             </div>
                         </div>
                     )}
-                    <div className="hidden profile account-management">
+                    <div className="profile account-management">
                                 <h1>Account Management</h1>
                                 <h3>If you would like to delete your account and personal data associated with it, click the button below.</h3>
-                                <div className="profile button">Delete My Account</div>
+                                <div className="profile button" onClick={() => setConfirmModal(true)}>Delete My Account</div>
                         </div>
                 </div>
             
