@@ -74,12 +74,12 @@ body {
 
 .user-image-container {
     background-color: white;
-    height: 16rem;
-    width: 16rem;
+    height: 30vh;
+    width: 30vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%;
+    border-radius: 100%;
     overflow: hidden;
     margin-top: 3vh;
     transform: translateY(-18vh);
@@ -95,9 +95,9 @@ body {
 .user-image {
     /* remove background and border radius when using image */
     background: gray;
-    height: 15rem;
-    width: 15rem;
-    border-radius: 50%;
+    height: 93%;
+    width: 93%;
+    border-radius: 100%;
     object-fit: cover;
 }
 
@@ -185,6 +185,10 @@ body {
 .general-info input, .user-credentials input {
     width: 80%;
     padding: 0.5rem;
+}
+
+.button {
+    cursor: pointer;
 }
 
 .general-info .button, .user-credentials .button {
