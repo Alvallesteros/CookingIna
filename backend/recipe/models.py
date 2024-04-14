@@ -1,13 +1,12 @@
 from django.db import models
-#from profiles import UserProfile
+from profiles.models import UserProfile
 
 class Recipe(models.Model):
-    # Attributes
     recipe_id = models.AutoField(primary_key=True)
     image = models.ImageField(upload_to='recipe_images/', null=True, blank=True)
     title = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
-    #ingredients = models.TextField()
+    ingredients = models.ManyToManyField('Ingredient', related_name='recipes')
     cooking_time = models.IntegerField()
     servings = models.PositiveIntegerField()
     difficulty_choices = (
@@ -19,7 +18,7 @@ class Recipe(models.Model):
     )
     difficulty = models.IntegerField(choices=difficulty_choices)
     #tags = models.ManyToManyField('Tag', related_name='recipes', blank=True)
-    #author = models.ForeignKey('UserProfile', on_delete=models.SET_NULL, null=True, blank=True)
+    author = models.ForeignKey('UserProfile', on_delete=models.SET_NULL, null=True, blank=True)
     #spoonacular_api = models.CharField(max_length=255, null=True, blank=True)
     steps = models.TextField()
     average_rating = models.FloatField(default=0)
@@ -28,3 +27,11 @@ class Recipe(models.Model):
 
     def __str__(self):
         return self.title
+
+class Ingredient(models.Model):
+    ingredient_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=255)
+    description = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name
