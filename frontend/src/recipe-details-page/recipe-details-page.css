@@ -1,0 +1,298 @@
+:root {
+    --main-bg-color: #FDEEDC;
+    --main-red: #E64848;
+    --main-font: 'TT Norms Pro'
+}
+
+body {
+    margin: 0;
+    font-family: var(--main-font);
+}
+
+.bg {
+    background-color: var(--main-bg-color);
+    height: 150vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: -1;
+}
+
+.navbar {
+    background: var(--main-red);
+    position: fixed;
+    top: 0;
+    overflow: hidden;
+    height: 6vh;
+    width: 100vw;
+    font-family: var(--main-font);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    padding-left: 2vw;
+}
+
+.logo {
+    width: 30%;
+    margin-right: 1vw;
+}
+
+.logo-text {
+    color: white;
+    font-weight: 900;
+}
+
+.navbar-ul {
+    list-style-type: none;
+    display: flex;
+}
+
+.navbar-ul li {
+    margin-right: 2vw;
+}
+
+.navbar-ul a {
+    color: white;
+    text-decoration: none;
+    font-size: 2vh;
+    font-weight: 700;
+}
+
+.top-containers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80vw;
+}
+
+.recipe-description-container {
+    background-color: white;
+    height: auto;
+    width: 40%;
+    border-radius: 45px;
+    margin-top: 15vh;
+    display: flex;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    z-index: 0;
+}
+
+.recipe-name-rating {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.recipe-rating {
+    display: flex;
+    align-items: center;
+}
+
+/* Placeholder for the Star */
+.temp-star {
+    background-color: var(--main-red);
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.recipe-description-container h1 {
+    font-weight: 700;
+    color: var(--main-red)
+}
+
+.recipe-description-container h3 {
+    font-weight: 700;
+    color: var(--main-red);
+    margin-top: 0;
+}
+
+.username-writeup h3 {
+    font-weight: 700;
+    color: black;
+    margin-top: 0;
+}
+
+.username-writeup {
+    font-weight: 300;
+    text-align:justify;  
+    text-justify:inter-word;
+}
+
+.difficulty-icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Placeholder for the Spatula */
+.temp-spatula {
+    background-color: lightgray;
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.cooking-techniques h3 {
+    margin-top: 1rem;
+}
+
+.cooking-techniques p {
+    font-weight: 300;
+}
+
+.nutritional-info h3{
+    margin-top: 0.5rem;
+}
+
+.nutritional-info p {
+    font-weight: 300;
+    text-align: justify;  
+    text-justify: inter-word;
+}
+
+.main-image-container {
+    margin-top: 15vh;
+    background-color: var(--main-bg-color);
+    height: 25rem;
+    width: 25rem;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 3rem;
+    border-color: var(--main-red);
+    transform: translateX(17vw);
+    z-index: 1;
+}
+
+.recipe-image {
+    background-color: gray;
+    height: 28rem;
+    width: 28rem;
+    border-radius: 50%;
+    object-fit: cover;
+    transform: translateX(-20vw);
+    margin-top: -1rem;
+    box-shadow: 
+        0px 624px 175px 0px rgba(0, 0, 0, 0.00), 
+        0px 399px 160px 0px rgba(0, 0, 0, 0.01), 
+        0px 224px 135px 0px rgba(0, 0, 0, 0.05), 
+        0px 100px 100px 0px rgba(0, 0, 0, 0.09), 
+        0px 25px 55px 0px rgba(0, 0, 0, 0.10);
+}
+
+.bottom-containers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 80vw;
+}
+
+.ingredients-container {
+    background-color: white;
+    width: 40%;
+    border-radius: 45px;
+    margin-top: 5vh;
+    margin-right: 8vh;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    z-index: 0;
+}
+
+.ingredients-container h3 {
+    color: var(--main-red);
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.ingredients-list-1 h3, .ingredients-list-2 h3 {
+    color: black;
+    font-weight: 700;
+}
+
+.ingredients-list-1 li, .ingredients-list-2 li {
+    color: black;
+    font-weight: 300;
+    text-align: justify;  
+    text-justify: inter-word;
+}
+
+.preparation-container {
+    background-color: white;
+    height: auto;
+    width: 40%;
+    border-radius: 45px;
+    margin-top: 5vh;
+    display: flex;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    flex-direction: column;
+    z-index: 0;
+}
+
+.preparation-text h3 {
+    color: var(--main-red);
+}
+
+.preparation-text li {
+    font-weight: 300;
+}
+
+.rate-recipe h3 {
+    color: var(--main-red);
+    text-align: center;
+}
+
+.star-rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.star-rating .temp-star {
+    background-color: lightgray;
+    margin-right: 0.5rem;
+}
+
+.recipe-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.button {
+    color: var(--main-red);
+    font-weight: 700;
+    border-radius: 45px;
+    border-style: solid;
+    border-color: var(--main-red);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.ingredients-container, .preparation-container {
+    flex: 1;
+}
