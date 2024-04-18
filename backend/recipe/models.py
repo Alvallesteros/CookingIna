@@ -8,7 +8,7 @@ class Recipe(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
 
-    ingredients = models.ManyToManyField('Ingredient', related_name='recipes')
+    ingredients = models.ManyToManyField('Ingredient', related_name='ingredients')
     cooking_time = models.IntegerField()
     servings = models.PositiveIntegerField()
 
@@ -21,7 +21,7 @@ class Recipe(models.Model):
 
     # cuisines if cuisine is another model (many to many)
     cuisine = models.ManyToManyField('Cuisine', related_name='cuisines')
-    
+
     difficulty_choices = (
         (0, 'Learning'),
         (1, 'Home Cook'),

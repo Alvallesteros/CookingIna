@@ -2,12 +2,16 @@ from rest_framework import generics, permissions, status
 from .models import Recipe
 from .serializers import RecipeSerializer
 from ..backend.permissions import IsOwner, IsAdminUser
+from .filters import RecipeFilter
+from django_filters import rest_framework as filters
 
 # Consider the appropriate permission levels for each view
 class RecipeListView(generics.ListCreateAPIView):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]  
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_class = RecipeFilter
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     pass
 
