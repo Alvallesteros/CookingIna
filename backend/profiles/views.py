@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from authentication.models import CustomUser
 from .models import UserProfile
 from .serializers import UserProfileSerializer
-from ..backend.permissions import IsOwner, IsAdminUser
+from backend.permissions import IsOwner, IsAdminUser
 from django.http import Http404
 
 class UserProfileCreateView(generics.CreateAPIView):

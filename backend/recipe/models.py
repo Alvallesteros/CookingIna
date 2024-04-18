@@ -12,8 +12,14 @@ class Recipe(models.Model):
     cooking_time = models.IntegerField()
     servings = models.PositiveIntegerField()
 
-    categories = ['Breakfast', 'Lunch', 'Dinner', 'Snack', 'Dessert']
-    category = models.CharField(choices = categories)
+    categories = [
+        ('B', 'Breakfast'), 
+        ('L', 'Lunch'), 
+        ('DI', 'Dinner'), 
+        ('S', 'Snack'), 
+        ('DE', 'Dessert')
+    ]
+    category = models.CharField(choices = categories, max_length=255, default='B')
 
     # cuisines if cuisine is not another model (only 1 cuisine for a recipe)
     # cuisines = ['Filipino', 'Korean', 'Chinese', 'Japanese', 'American', 'Italian']
@@ -31,7 +37,7 @@ class Recipe(models.Model):
     )
     difficulty = models.IntegerField(choices=difficulty_choices)
     #tags = models.ManyToManyField('Tag', related_name='recipes', blank=True)
-    author = models.ForeignKey('UserProfile', on_delete=models.SET_NULL, null=True, blank=True)
+    author = models.ForeignKey('profiles.UserProfile', on_delete=models.SET_NULL, null=True, blank=True)
     #spoonacular_api = models.CharField(max_length=255, null=True, blank=True)
     steps = models.TextField()
     average_rating = models.FloatField(default=0)
@@ -44,6 +50,9 @@ class Recipe(models.Model):
 class Cuisine(models.Model):
     cuisine_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
 
 class Ingredient(models.Model):
     ingredient_id = models.AutoField(primary_key=True)

@@ -4,14 +4,17 @@ from .models import Recipe
 class RecipeFilter(filters.FilterSet):
     ingredients = filters.CharFilter(
         name='ingredients__name',
-        lookup_type='contains',
+        lookup_expr='icontains',
     )
 
     cuisines = filters.CharFilter(
         name='cuisines__name',
-        lookup_type='contains',
+        lookup_expr='icontains',
     )
+
+    title = filters.CharFilter(name='title', lookup_expr='icontains')
+    category = filters.CharFilter(name='category', lookup_expr='icontains')
 
     class Meta:
         model = Recipe
-        fields = ('name', 'ingredients', 'cuisines', 'category__iexact')
+        fields = ('title', 'ingredients', 'cuisines', 'category')

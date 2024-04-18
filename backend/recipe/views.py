@@ -1,8 +1,8 @@
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
-from .models import Recipe
-from .serializers import RecipeSerializer
-from ..backend.permissions import IsOwner, IsAdminUser
+from .models import Recipe, Ingredient, Cuisine
+from .serializers import RecipeSerializer, IngredientSerializer, CuisineSerializer
+from backend.permissions import IsOwner, IsAdminUser
 from .filters import RecipeFilter
 from django_filters import rest_framework as filters
 
@@ -26,6 +26,18 @@ class RecipeListView(generics.ListCreateAPIView):
     filterset_class = RecipeFilter
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
+    pass
+
+class IngredientListView(generics.ListCreateAPIView):
+    queryset = Ingredient.objects.all()
+    serializer_class = IngredientSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    pass
+
+class CuisineListView(generics.ListCreateAPIView):
+    queryset = Cuisine.objects.all()
+    serializer_class = CuisineSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     pass
 
 class RecipeDetailView(generics.RetrieveAPIView):
