@@ -1,14 +1,43 @@
 from rest_framework import generics, permissions, status
-from .models import Recipe
-from .serializers import RecipeSerializer
-from ..backend.permissions import IsOwner, IsAdminUser
+from rest_framework.response import Response
+from .models import Recipe, Ingredient, Cuisine
+from .serializers import RecipeSerializer, IngredientSerializer, CuisineSerializer
+from backend.permissions import IsOwner, IsAdminUser
+from .filters import RecipeFilter
+from django_filters import rest_framework as filters
 
 # Consider the appropriate permission levels for each view
+class RecipeCreateView(generics.CreateAPIView):
+    queryset = Recipe.objects.all()
+    serializer_class = RecipeSerializer
+    permission_classes = [permissions.AllowAny]
+
+    def post(self, request):
+        serializer = RecipeSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 class RecipeListView(generics.ListCreateAPIView):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]  
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_class = RecipeFilter
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
+    pass
+
+class IngredientListView(generics.ListCreateAPIView):
+    queryset = Ingredient.objects.all()
+    serializer_class = IngredientSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    pass
+
+class CuisineListView(generics.ListCreateAPIView):
+    queryset = Cuisine.objects.all()
+    serializer_class = CuisineSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     pass
 
 class RecipeDetailView(generics.RetrieveAPIView):

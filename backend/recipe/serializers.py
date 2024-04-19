@@ -1,14 +1,17 @@
 from rest_framework import serializers
-from .models import Ingredient, Recipe
 from profiles.models import UserProfile
+from .models import Cuisine
+from .models import Recipe, Ingredient
 
 class IngredientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ingredient
         fields = '__all__'  
 
-from .models import Recipe, Ingredient
-
+class CuisineSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cuisine
+        fields = '__all__'
 
 class RecipeSerializer(serializers.ModelSerializer):
     ingredients = IngredientSerializer(many=True, read_only=True)  # Nested Read-Only
