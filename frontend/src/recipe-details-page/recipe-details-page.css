@@ -11,11 +11,12 @@ body {
 
 .bg {
     background-color: var(--main-bg-color);
-    height: 150vh;
+    height: auto;
     width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
     z-index: -1;
 }
 
@@ -100,12 +101,6 @@ body {
     align-items: center;
 }
 
-/* Placeholder for the Star */
-.temp-star {
-    background-color: var(--main-red);
-    height: 1.5rem;
-    width: 1.5rem;
-}
 
 .recipe-description-container h1 {
     font-weight: 700;
@@ -138,10 +133,10 @@ body {
 
 /* Placeholder for the Spatula */
 .temp-spatula {
-    background-color: lightgray;
-    height: 1.5rem;
-    width: 1.5rem;
-    margin-right: 0.5rem;
+    height: 2.5rem;
+    width: 2.5rem;
+    margin: -5px;
+    fill: lightgray;
 }
 
 .cooking-techniques h3 {
@@ -176,19 +171,12 @@ body {
 }
 
 .recipe-image {
-    background-color: gray;
     height: 28rem;
     width: 28rem;
     border-radius: 50%;
     object-fit: cover;
     transform: translateX(-20vw);
     margin-top: -1rem;
-    box-shadow: 
-        0px 624px 175px 0px rgba(0, 0, 0, 0.00), 
-        0px 399px 160px 0px rgba(0, 0, 0, 0.01), 
-        0px 224px 135px 0px rgba(0, 0, 0, 0.05), 
-        0px 100px 100px 0px rgba(0, 0, 0, 0.09), 
-        0px 25px 55px 0px rgba(0, 0, 0, 0.10);
 }
 
 .bottom-containers {
@@ -197,6 +185,7 @@ body {
     justify-content: space-between;
     align-items: stretch;
     width: 80vw;
+    padding-bottom: 10vh;
 }
 
 .ingredients-container {
@@ -263,14 +252,27 @@ body {
 .star-rating {
     display: flex;
     flex-direction: row;
+    unicode-bidi: bidi-override; /* For RTL language support */
     align-items: center;
     justify-content: center;
 }
-
-.star-rating .temp-star {
-    background-color: lightgray;
-    margin-right: 0.5rem;
-}
+  
+  .star-rating input[type="radio"] {
+    display: none; 
+  }
+  
+  .star-rating label {
+    font-size: 2.5em; 
+    cursor: pointer;
+    transition: color 0.2s;
+    color: lightgray;
+  }
+  
+  .star-rating input[type="radio"]:checked ~ label,
+  .star-rating label:hover ~ label:not(:hover), /* Target siblings to the left */
+  .star-rating label:hover {
+    color: gold; 
+  } 
 
 .recipe-buttons {
     display: flex;
@@ -292,6 +294,15 @@ body {
     padding-left: 2rem;
     padding-right: 2rem;
 }
+
+.button:hover {
+    color: white;
+    font-weight: 700;
+    border-radius: 45px;
+    background-color: var(--main-red);
+    transition: 0.25s;
+}
+
 
 .ingredients-container, .preparation-container {
     flex: 1;

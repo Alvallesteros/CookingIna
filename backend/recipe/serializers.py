@@ -2,6 +2,7 @@ from rest_framework import serializers
 from profiles.models import UserProfile
 from .models import Cuisine
 from .models import Recipe, Ingredient
+from profiles.serializers import UserProfileSerializer
 
 class IngredientSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,6 +16,7 @@ class CuisineSerializer(serializers.ModelSerializer):
 
 class RecipeSerializer(serializers.ModelSerializer):
     ingredients = IngredientSerializer(many=True, read_only=True)  # Nested Read-Only
+    author = UserProfileSerializer(read_only=True)
     #author = serializers.SlugRelatedField(slug_field='username', queryset=UserProfile.objects.all()) 
 
     class Meta:

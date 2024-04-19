@@ -1,74 +1,58 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './recipe-details-page.css';
 
+
 const RecipeDetailsPage = () => {
 
-    const navigate = useNavigate();
+    const { recipeId } = useParams();
+    const [recipeData, setRecipeData] = useState(null); 
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [rating, setRating] = useState(0);
+    const [hoverValue, setHoverValue] = useState(undefined);
 
-    const [credError, setCredError] = useState(false);
+    useEffect(() => {
+        const fetchData = async () => {
+            setIsLoading(true); 
+            setError(null); 
+            try {
+                const response = await fetch(`http://localhost:8000/api/recipes/${recipeId}/`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setRecipeData(data);
+            } catch (error) {
+                setError(error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
 
-    const [formData, setFormData] = useState({
-        username: '',
-        password: ''
-    });
+        fetchData();
+    }, [recipeId]);
 
-
-    const handleChange = (e) => {
-        const {name, value} = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
+    const handleClick = (value) => {
+        setRating(value);
     };
 
+    const handleMouseOver = (value) => {
+        setHoverValue(value);
+    };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        fetch('http://localhost:8000/api/login/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        }).then (
-            response => {
-                if (!response.ok) {
-                    return response.json().then(data => {
-                        // Check if the error response contains multiple errors
-                        if (data && typeof data === 'object' && Object.keys(data).length > 0) {
-                            const errorMessage = Object.values(data).join(', '); // Join multiple error messages
-                            throw new Error(errorMessage);
-                        } else {
-                            throw new Error('Unknown error occurred');
-                        }
-                    });
-                }        
-                return response.json();
-            }
-        ).then(
-            data => {
-                console.log('Success: ', data)
-                navigate('/dashboard')
-            }
-        ).catch(
-            error => {
-                console.error('Error: ', error);
-                const errorMessage = error.message;
-
-                const credError = /credentials/.test(errorMessage);
-                setCredError(credError);
-            }
-        );
+    const handleMouseLeave = () => {
+        setHoverValue(undefined);
     };
 
     return  (
         <div className="bg">
             <nav className="navbar">
                 <div className="logo-container">
-                    <img alt="Logo" class="logo">
+                    <img alt="Logo" className="logo"/>
                     <span className="logo-text">CookingIna</span>
                 </div>
                 <ul className="navbar-ul">
@@ -90,26 +74,28 @@ const RecipeDetailsPage = () => {
             <div className="top-containers">
                 <div className="recipe-description-container">
                     <div className="recipe-name-rating">
-                        <h1>Recipe Name</h1>
+                        <h1>{recipeData ? recipeData.title : 'Loading...'}</h1>
                         <div className="recipe-rating">
-                            <h1>#.#</h1>
-                        <div className="temp-star"></div>
+                            <h1>{recipeData ? recipeData.average_rating : 0.0}★</h1>
                         </div>
                     </div>
     
                     <div className="username-writeup">
-                        <h3>@username</h3>
-                        <p>This easy Greek salad recipe is a flavorful, refreshing summer side dish! If you make it ahead for a gathering, save a few mint leaves to add right before serving.</p>
+                        <h3>By: {recipeData ? recipeData.author.first_name + ' ' + recipeData.author.last_name : 'Author Loading...' }</h3>
+                        <p>{recipeData ? recipeData.description : 'Description Loading...'}</p>
                     </div>
     
                     <div className="recipe-difficulty">
                         <h3>Difficulty:</h3>
                         <div className="difficulty-icons">
-                            <div className="temp-spatula"></div>
-                            <div className="temp-spatula"></div>
-                            <div className="temp-spatula"></div>
-                            <div className="temp-spatula"></div>
-                            <div className="temp-spatula"></div>
+                            {recipeData ? Array(5).fill().map((_, index) => (
+                                <embed
+                                    key={index}
+                                    type='image/svg+xml'
+                                    src={index < recipeData.difficulty + 1 ? "/spatula_active.svg" : "/spatula.svg"}
+                                    className='temp-spatula'
+                                />
+                            )): 'Loading...'}
                         </div>
                     </div>
     
@@ -125,8 +111,7 @@ const RecipeDetailsPage = () => {
                 </div>
 
                 <div className="main-image-container">
-                    <div className="circle"></div>
-                    <div className="recipe-image"></div>
+                    <img src={recipeData ? recipeData.image : ''} alt="Recipe" className="recipe-image" /> 
                 </div>
             </div>
 
@@ -134,27 +119,12 @@ const RecipeDetailsPage = () => {
                 <div className="ingredients-container">
                     <h3>Ingredients:</h3>
                     <div className="ingredients-list-1">
-                        <h3>Dressing</h3>
                         <ul>
-                            <li>¼ cup extra-virgin olive oil</li>
-                            <li>3 tablespoons red wine vinegar</li>
-                            <li>1 garlic clove, minced</li>
-                            <li>½ teaspoon dried oregano, more for sprinkling</li>
-                            <li>¼ teaspoon Dijon mustard</li>
-                            <li>¼ teaspoon sea salt</li>
-                            <li>Freshly ground black pepper</li>
-                        </ul>
-                    </div>
-                    <div className="ingredients-list-2">
-                        <h3>For the Salad</h3>
-                        <ul>
-                            <li>1 English cucumber, cut lengthwise, seeded, and sliced ¼-inch thick</li>
-                            <li>1 green bell pepper, chopped into 1-inch pieces</li>
-                            <li>2 cups halved cherry tomatoes</li>
-                            <li>5 ounces feta cheese, cut into ½ inch cubes</li>
-                            <li>⅓ cup thinly sliced red onion</li>
-                            <li>⅓ cup pitted Kalamata olives</li>
-                            <li>⅓ cup fresh mint leaves</li>
+                            {recipeData && recipeData.ingredients.map((ingredient, index) => (
+                                <li key={index}>
+                                    {ingredient.name}
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>
@@ -163,19 +133,25 @@ const RecipeDetailsPage = () => {
                     <div className="preparation-text">
                         <h3>Preparation:</h3>
                         <ol>
-                            <li>Make the dressing: In a small bowl, whisk together the olive oil, vinegar, garlic, oregano, mustard, salt, and several grinds of pepper.</li>
-                            <li>On a large platter, arrange the cucumber, green pepper, cherry tomatoes, feta cheese, red onions, and olives. Drizzle with the dressing and very gently toss. Sprinkle with a few generous pinches of oregano and top with the mint leaves. Season to taste and serve.</li>
+                            {recipeData && recipeData.steps.split('\n').map((step, index) => (
+                                <li key={index}>{step}</li>
+                            ))}
                         </ol>
                     </div>
                     
                     <div className="rate-recipe">
                         <h3>Rate this Recipe:</h3>
                         <div className="star-rating">
-                            <div className="temp-star"></div>
-                            <div className="temp-star"></div>
-                            <div className="temp-star"></div>
-                            <div className="temp-star"></div>
-                            <div className="temp-star"></div>
+                            <input type="radio" id="1star" name="rating" value="1" />
+                            <label for="1star">★</label>
+                            <input type="radio" id="2star" name="rating" value="2" />
+                            <label for="2star">★</label>
+                            <input type="radio" id="3star" name="rating" value="3" />
+                            <label for="3star">★</label>
+                            <input type="radio" id="4star" name="rating" value="4" />
+                            <label for="4star">★</label>
+                            <input type="radio" id="5star" name="rating" value="5" />
+                            <label for="5star">★</label>
                         </div>
                     </div>
 

@@ -45,11 +45,9 @@ class RecipeDetailView(generics.RetrieveAPIView):
     serializer_class = RecipeSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-
     def get_object(self):
-        recipe_id = self.kwargs.get('recipe_id')
-        recipe = Recipe.objects.get(recipe_id=recipe_id)
-        return Recipe.objects.get(recipe=recipe)
+        recipe_id = self.kwargs.get('pk')
+        return Recipe.objects.get(recipe_id=recipe_id)
 
     pass
 
