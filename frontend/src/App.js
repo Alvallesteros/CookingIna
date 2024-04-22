@@ -3,6 +3,7 @@ import './App.css';
 import LoginPage from './login-page/login-page';
 import SignupPage from './signup-page/signup-page';
 import UserProfilePage from './user-profile-page/user-profile-page';
+import CreateRecipePage from './create-recipe-page/create-recipe-page';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/profile/:username" element={<UserProfilePage />} />
+        <Routh path="/create-recipe" element={<CreateRecipePage />} />
       </Routes>
     </Router>
   );
