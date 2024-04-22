@@ -1,0 +1,303 @@
+:root {
+    --main-bg-color: #FDEEDC;
+    --main-red: #E64848;
+    --main-font: 'TT Norms Pro'
+}
+
+body {
+    margin: 0;
+    font-family: var(--main-font);
+}
+
+.bg {
+    background-color: var(--main-bg-color);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: -1;
+}
+
+.navbar {
+    background: var(--main-red);
+    position: fixed;
+    top: 0;
+    height: 6vh;
+    width: 100vw;
+    font-family: var(--main-font);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    padding-left: 2vw;
+}
+
+.logo {
+    width: 30%;
+    margin-right: 1vw;
+}
+
+.logo-text {
+    color: white;
+    font-weight: 900;
+}
+
+.navbar-links {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin-right: 1vw;
+}
+
+.navbar-links > div {
+    width: 25%;
+}
+
+.navbar-home, .navbar-recipes, .navbar-cookbooks, .navbar-profile {
+    height: 100%;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 1.8vh;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    font-size: 2vh;
+}
+
+.navbar-recipes:hover, .navbar-cookbooks:hover, .navbar-profile:hover {
+    background-color: white;
+    color: var(--main-red);
+}
+
+.navbar-home a, .navbar-recipes a, .navbar-cookbooks a, .navbar-profile a {
+    color: white;
+    font-weight: 700;
+    font-size: 2vh;
+    text-decoration: none;
+}
+
+.navbar-recipes:hover a, .navbar-recipes:hover .dropdown a, .navbar-cookbooks:hover a, 
+.navbar-cookbooks:hover .dropdown a, .navbar-profile:hover a, .navbar-profile:hover .dropdown a {
+    color: var(--main-red);
+}
+
+.dropdown {
+    display: none;
+}
+
+.navbar-recipes:hover .dropdown, .navbar-cookbooks:hover .dropdown, .navbar-profile:hover .dropdown {
+    display: block;
+    position: absolute;
+    background-color: white;
+    width: 12.5%;
+    transform: translateX(-16%);
+    top: 100%;
+    z-index: 100;
+}
+
+.dropdown a {
+    display: block;
+    text-decoration: none;
+    font-size: 2vh;
+    color: var(--main-red);
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+.dropdown-entry-1, .dropdown-entry-2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+}
+
+.temp-icon {
+    height: 2rem;
+    width: 2rem;
+    background-color: lightgray;
+    margin-left: 6%;
+    margin-right: 6%;
+}
+
+.banner {
+    position: relative;
+}
+.cookbook-image-placeholder{
+    position: relative;
+    top: 0;
+    left:0;
+    width: 100vw;
+    height: 30vh;
+    background-color: gray;
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: blur(0.3rem);
+    padding-top: 3.5vw;
+}
+
+.banner-text {
+    position: absolute;
+    top: 5%;
+    left: 3%;
+    color: white;
+    font-size: 6vw;
+    font-weight: bold;
+    text-shadow: 0.5vw 0.5vw 0.5vw rgba(0, 0, 0, 0.5);
+}
+
+.banner-button {
+    position: absolute;
+    top: 65%;
+    left: 3%;              
+    padding: 20px; 
+    background-color: #E64848;
+    color: white; 
+    text-decoration: none; 
+    border: none;
+    border-radius: 30px;
+    font-size: 1.5vw;
+    font-weight: bold;
+}
+
+.banner-button::before {
+    content: "+";
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2.5vh;
+}
+
+.card-container {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    margin-left: 3%;
+}
+
+.card {
+    background-color: white;
+    border-radius: 15px;
+    height: 20vh;
+    width: calc(30% - 10px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+    margin-top: 6vh;
+    margin-right: 3vw;
+}
+
+.card-image {
+    background-color: gray;
+    height: 100%;
+    width: 100%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    object-fit: cover;
+}
+
+.card-content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /*space-between;*/
+    align-items: center;/*flex-start;*/
+}
+
+.card-content h3 {
+    font-size: 2vh;
+    color: var(--main-red);
+    font-weight: 700;
+    align-self: flex-start;
+    text-align: center;
+    margin-right: 13%;
+    flex: 1;
+    white-space: nowrap;
+
+}
+
+.ellipsis {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    color: var(--main-red);
+    font-size: 2.5vh;
+    font-weight: 700;
+    transform: translateY(-20%);
+    margin-left: 19%;
+    margin-right: 5%;
+    
+}
+
+.ellipsis:hover .popup {
+    display: block;
+}
+
+.popup {
+    display: none;
+    position: absolute;
+    background-color: white;
+    padding: 0.3vw;
+    border-radius: 15px;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
+    z-index: 10;
+    top: -80%; 
+    left: 50%; 
+    transform: translate(-50%, -70%);
+    width: 10vw;
+}
+
+.popup-icons {
+    height: 1.5vh;
+    width: 1.5vh;
+    background-color: lightgray;
+    margin-left: 0.5vh;
+}
+
+.popup-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 1vh;
+}
+
+.popup::before {
+    content: "";
+    position: absolute;
+    bottom: -1vh;
+    left: 50%;
+    transform: translateX(-50%);
+    border-style: solid;
+    border-width: 10px 10px 0 10px;
+    border-color: white transparent transparent transparent;
+    z-index: 10;
+}
+
+.popup a {
+    display: inline-block;;
+    margin-bottom: 1vh;
+    color: var(--main-red);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.5vh;
+    margin-left: 0.5vw;
+}
