@@ -6,6 +6,7 @@ import UserProfilePage from './user-profile-page/user-profile-page';
 import CookbooksPage from './cookbooks-page/cookbooks-page';
 import RecipeDetailsPage from './recipe-details-page/recipe-details-page';
 import ViewRecipesPage from './view-recipes-page/view-recipes-page';
+import CreateRecipePage from './create-recipe-page/create-recipe-page';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/cookbooks" element={<CookbooksPage />} />
         <Route path="/recipe/:recipeId" element={<RecipeDetailsPage />} />
         <Route path="/dashboard" element={<ViewRecipesPage />} />
+        <Routh path="/create-recipe" element={<CreateRecipePage />} />
       </Routes>
     </Router>
   );
