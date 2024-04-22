@@ -152,21 +152,35 @@ body {
     text-shadow: 0.5vw 0.5vw 0.5vw rgba(0, 0, 0, 0.5);
 }
 
-.banner-button {
+.banner-buttons {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
     position: absolute;
     top: 65%;
-    left: 3%;              
+    left: 3%;
+}
+
+.banner-buttons a {
+    text-decoration: none;
+    color: white;
+}
+
+.banner-button-a, .banner-button-b {             
     padding: 20px; 
     background-color: #E64848;
-    color: white; 
-    text-decoration: none; 
     border: none;
     border-radius: 30px;
     font-size: 1.5vw;
     font-weight: bold;
+    color: white;
 }
 
-.banner-button::before {
+.banner-button-b {
+    margin-left: 3%; 
+}
+
+.banner-button-a::before, .banner-button-b::before {
     content: "+";
     display: inline-block;
     margin-right: 5px;

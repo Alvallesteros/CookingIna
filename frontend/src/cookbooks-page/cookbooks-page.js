@@ -119,11 +119,17 @@ const CookbooksPage = () => {
             </nav>
 
             <div className="banner">
-                <div className="cookbook-image-placeholder">
-                </div>
+                <div className="cookbook-image-placeholder"></div>
                 <h2 className="banner-text">My Cookbooks</h2>
-                <a href="#" className="banner-button">Create Cookbook</a>
-
+                
+                <div className="banner-buttons">
+                    <div className="banner-button-a">
+                        <a href="#">Create Cookbook</a>
+                    </div>
+                    <div className="banner-button-b">
+                        <a href="#">View All Cookbooks</a>
+                    </div>
+                </div>
             </div>
 
             <div className="container">
