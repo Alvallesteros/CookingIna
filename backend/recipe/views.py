@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
-from .models import Recipe, Ingredient, Cuisine
-from .serializers import RecipeSerializer, IngredientSerializer, CuisineSerializer
+from .models import Recipe, Ingredient, Cuisine, Cookbook
+from .serializers import RecipeSerializer, IngredientSerializer, CuisineSerializer, CookbookSerializer
 from backend.permissions import IsOwner, IsAdminUser
 from .filters import RecipeFilter
 from django_filters import rest_framework as filters
@@ -73,3 +73,35 @@ class RecipeDeleteView(generics.DestroyAPIView):
         recipe = Recipe.objects.get(recipe_id=recipe_id)
         return Recipe.objects.get(recipe=recipe)
     pass
+
+class CookbookCreateView(generics.CreateAPIView):
+    queryset = Recipe.objects.all()
+    serializer_class = CookbookSerializer
+    permission_classes = [permissions.AllowAny]
+
+    def post(self, request):
+        serializer = CookbookSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class CookbookListView(generics.ListCreateAPIView):
+    queryset = Cookbook.objects.all()
+    serializer_class = CookbookSerializer
+    permission_classes = [permissions.IsAuthenticated]  # Users must be logged in
+
+class CookbookDetailView(generics.RetrieveAPIView):
+    queryset = Cookbook.objects.all()
+    serializer_class = CookbookSerializer
+    permission_classes = [permissions.IsAuthenticated] 
+
+class CookbookUpdateView(generics.UpdateAPIView):
+    queryset = Cookbook.objects.all()
+    serializer_class = CookbookSerializer
+    permission_classes = [permissions.IsAuthenticated, IsOwner] 
+
+class CookbookDeleteView(generics.DestroyAPIView):
+    queryset = Cookbook.objects.all()
+    serializer_class = CookbookSerializer
+    permission_classes = [permissions.IsAuthenticated, IsOwner]
