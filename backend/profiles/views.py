@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from authentication.models import CustomUser
 from .models import UserProfile
 from .serializers import UserProfileSerializer
-from .permissions import IsOwner
+from backend.permissions import IsOwner, IsAdminUser
 from django.http import Http404
 
 class UserProfileCreateView(generics.CreateAPIView):
@@ -36,7 +36,7 @@ class UserProfileUpdateView(generics.UpdateAPIView):
     # to update
     # permission_classes = [IsAuthenticated, IsOwner]
     queryset = UserProfile.objects
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [IsAuthenticated, IsOwner]
     serializer_class = UserProfileSerializer
     
     def get_object(self):
@@ -48,7 +48,7 @@ class UserProfileUpdateView(generics.UpdateAPIView):
 
 class UserProfileDeleteView(generics.DestroyAPIView):
     queryset = UserProfile.objects
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [IsAuthenticated, IsOwner, IsAdminUser]
     serializer_class = UserProfileSerializer
 
     def get_object(self):
