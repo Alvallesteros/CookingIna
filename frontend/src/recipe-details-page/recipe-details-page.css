@@ -307,3 +307,19 @@ body {
 .ingredients-container, .preparation-container {
     flex: 1;
 }
+
+.delete-button {
+    margin-top: 1rem;
+    margin-bottom: 4rem;
+}
+
+.delete-button .button {
+    background-color: var(--main-red);
+    color: white;
+    font-weight: 700;
+    border-radius: 45px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}

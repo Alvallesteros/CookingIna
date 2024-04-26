@@ -161,6 +161,10 @@ const RecipeDetailsPage = () => {
                     </div>
                 </div>
             </div>
+
+            <div class="delete-button">
+                <div class="button">Delete Recipe</div>
+            </div>
         </div>
     );
 };
