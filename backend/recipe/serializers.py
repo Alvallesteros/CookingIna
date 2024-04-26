@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from profiles.models import UserProfile
-from .models import Cuisine, Recipe, Ingredient, Cookbook
+from .models import Cuisine, Recipe, Ingredient, Cookbook, RecipeIngredient
 from profiles.serializers import UserProfileSerializer
 
 class IngredientSerializer(serializers.ModelSerializer):
@@ -8,25 +8,37 @@ class IngredientSerializer(serializers.ModelSerializer):
         model = Ingredient
         fields = '__all__'  
 
+class RecipeIngredientSerializer(serializers.ModelSerializer):
+    ingredients = IngredientSerializer(read_only=True)  # Nested Read-Only
+    class Meta:
+        model = RecipeIngredient
+        fields = '__all__'
+    
+    def create(self, validated_data):
+        ingredient_data = validated_data.pop('ingredient')
+        recipe_ingredient = RecipeIngredient.objects.create(**validated_data)
+        ingredient, _ = Ingredient.objects.get_or_create(**ingredient_data)
+        recipe_ingredient.ingredient = ingredient
+        return recipe_ingredient
+
 class CuisineSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cuisine
         fields = '__all__'
 
 class RecipeSerializer(serializers.ModelSerializer):
-    ingredients = IngredientSerializer(many=True, read_only=True)  # Nested Read-Only
+    riserializer = RecipeIngredientSerializer(many=True)
     author = UserProfileSerializer(read_only=True)
 
     class Meta:
         model = Recipe
         fields = '__all__'
 
-
     def create(self, validated_data):
         ingredients_data = validated_data.pop('ingredients')
         recipe = Recipe.objects.create(**validated_data)  
         for ingredient_data in ingredients_data:
-            ingredient, _ = Ingredient.objects.get_or_create(**ingredient_data)
+            ingredient = riserializer.create(ingredient_data) 
             recipe.ingredients.add(ingredient)
         return recipe
 
@@ -38,7 +50,7 @@ class RecipeSerializer(serializers.ModelSerializer):
         ingredients_data = validated_data.pop('ingredients')
         instance.ingredients.clear()  
         for ingredient_data in ingredients_data:
-            ingredient, _ = Ingredient.objects.get_or_create(**ingredient_data)
+            ingredient = riserializer.update(ingredient_data)
             instance.ingredients.add(ingredient)
 
         instance.save()

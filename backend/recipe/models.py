@@ -6,7 +6,7 @@ class Recipe(models.Model):
     image = models.ImageField(upload_to='recipe_images/', null=True, blank=True)
     title = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
-    ingredients = models.ManyToManyField('Ingredient', related_name='ingredients')
+    ingredients = models.ManyToManyField('IngredientRecipe', related_name='ingredients')
     cooking_time = models.IntegerField()
     servings = models.PositiveIntegerField()
 
@@ -52,6 +52,15 @@ class Ingredient(models.Model):
     def __str__(self):
         return self.name
     
+class RecipeIngredient(models.Model):
+    ri_id = models.AutoField(primary_key=True)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
+    quantity = models.IntegerField()
+    unit = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f'{quantity} {unit} of {ingredient}'
 
 class Cookbook(models.Model):
     cookbook_id = models.AutoField(primary_key=True)
