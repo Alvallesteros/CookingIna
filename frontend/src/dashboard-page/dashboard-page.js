@@ -187,7 +187,7 @@ const DashboardPage = () => {
                     </div>
                     <h2>Recipes</h2>
                     <div className="recipes">
-                        {recipes && recipes.map(recipe => (
+                        {recipes && recipes.slice(0, 6).map(recipe => (
                             <div className="card">
                                 <div className="card-image">
                                     <img src={recipe.image}></img>
