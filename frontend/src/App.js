@@ -5,6 +5,7 @@ import SignupPage from './signup-page/signup-page';
 import UserProfilePage from './user-profile-page/user-profile-page';
 import CookbooksPage from './cookbooks-page/cookbooks-page';
 import RecipeDetailsPage from './recipe-details-page/recipe-details-page';
+import ViewRecipesPage from './view-recipes-page/view-recipes-page';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/profile/:username" element={<UserProfilePage />} />
         <Route path="/cookbooks" element={<CookbooksPage />} />
         <Route path="/recipe/:recipeId" element={<RecipeDetailsPage />} />
+        <Route path="/dashboard" element={<ViewRecipesPage />} />
       </Routes>
     </Router>
   );
