@@ -19,7 +19,7 @@ body {
     z-index: -1;
 }
 
-.navbar {
+/* .navbar {
     background: var(--main-red);
     position: fixed;
     top: 0;
@@ -90,7 +90,7 @@ body {
 
 .dropdown {
     display: none;
-}
+} */
 
 .temp-icon {
     height: 2rem;

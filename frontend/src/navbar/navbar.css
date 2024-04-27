@@ -30,7 +30,7 @@
 }
 
 .logo {
-  width: 30%; /* Adjust as needed */
+  width: 15%; /* Adjust as needed */
   margin-right: 10px;
 }
 
@@ -50,6 +50,7 @@
 .navbar-links a {
   color: white;
   text-decoration: none;
+  font-weight: 700;
 }
 
 .dropdown {
