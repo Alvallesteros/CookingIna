@@ -7,6 +7,7 @@ import CookbooksPage from './cookbooks-page/cookbooks-page';
 import RecipeDetailsPage from './recipe-details-page/recipe-details-page';
 import ViewRecipesPage from './view-recipes-page/view-recipes-page';
 import CreateRecipePage from './create-recipe-page/create-recipe-page';
+import DashboardPage from './dashboard-page/dashboard-page';
 
 function App() {
   return (
@@ -17,8 +18,8 @@ function App() {
         <Route path="/profile/:username" element={<UserProfilePage />} />
         <Route path="/cookbooks" element={<CookbooksPage />} />
         <Route path="/recipe/:recipeId" element={<RecipeDetailsPage />} />
-        <Route path="/dashboard" element={<ViewRecipesPage />} />
         <Routh path="/create-recipe" element={<CreateRecipePage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
       </Routes>
     </Router>
   );
