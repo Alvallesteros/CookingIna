@@ -9,7 +9,7 @@ body {
     font-family: var(--main-font);
 }
 
-.bg {
+.cookbooks .bg {
     background-color: var(--main-bg-color);
     height: 100vh;
     width: 100vw;
@@ -19,6 +19,7 @@ body {
     z-index: -1;
 }
 
+/*
 .navbar {
     background: var(--main-red);
     position: fixed;
@@ -31,24 +32,25 @@ body {
     justify-content: space-between;
     z-index: 10;
 }
+*/
 
-.logo-container {
+.cookbooks .logo-container {
     display: flex;
     align-items: center;
     padding-left: 2vw;
 }
 
-.logo {
+.cookbooks .logo {
     width: 30%;
     margin-right: 1vw;
 }
 
-.logo-text {
+.cookbooks .logo-text {
     color: white;
     font-weight: 900;
 }
 
-.navbar-links {
+.cookbooks .navbar-links {
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -56,11 +58,11 @@ body {
     margin-right: 1vw;
 }
 
-.navbar-links > div {
+.cookbooks .navbar-links > div {
     width: 25%;
 }
 
-.navbar-home, .navbar-recipes, .navbar-cookbooks, .navbar-profile {
+.cookbooks .navbar-home, .cookbooks .navbar-recipes, .cookbooks .navbar-cookbooks, .cookbooks .navbar-profile {
     height: 100%;
     padding-left: 2vw;
     padding-right: 2vw;
@@ -71,28 +73,28 @@ body {
     font-size: 2vh;
 }
 
-.navbar-recipes:hover, .navbar-cookbooks:hover, .navbar-profile:hover {
+.cookbooks .navbar-recipes:hover, .navbar-cookbooks:hover, .navbar-profile:hover {
     background-color: white;
     color: var(--main-red);
 }
 
-.navbar-home a, .navbar-recipes a, .navbar-cookbooks a, .navbar-profile a {
+.cookbooks .navbar-home a, .navbar-recipes a, .navbar-cookbooks a, .navbar-profile a {
     color: white;
     font-weight: 700;
     font-size: 2vh;
     text-decoration: none;
 }
 
-.navbar-recipes:hover a, .navbar-recipes:hover .dropdown a, .navbar-cookbooks:hover a, 
-.navbar-cookbooks:hover .dropdown a, .navbar-profile:hover a, .navbar-profile:hover .dropdown a {
+.cookbooks .navbar-recipes:hover a, .cookbooks .navbar-recipes:hover .cookbooks .dropdown a, .cookbooks .navbar-cookbooks:hover a, 
+.cookbooks .navbar-cookbooks:hover .cookbooks .dropdown a, .cookbooks .navbar-profile:hover a, .cookbooks .navbar-profile:hover .dropdown a {
     color: var(--main-red);
 }
 
-.dropdown {
+.cookbooks .dropdown {
     display: none;
 }
 
-.temp-icon {
+.cookbooks .temp-icon {
     height: 2rem;
     width: 2rem;
     background-color: lightgray;
@@ -100,10 +102,11 @@ body {
     margin-right: 6%;
 }
 
-.banner {
+.cookbooks .banner {
     position: relative;
 }
-.cookbook-image-placeholder{
+
+.cookbooks .cookbook-image-placeholder{
     position: relative;
     top: 0;
     left:0;
@@ -116,7 +119,7 @@ body {
     padding-top: 3.5vw;
 }
 
-.banner-text {
+.cookbooks .banner-text {
     position: absolute;
     top: 5%;
     left: 3%;
@@ -126,7 +129,7 @@ body {
     text-shadow: 0.5vw 0.5vw 0.5vw rgba(0, 0, 0, 0.5);
 }
 
-.banner-buttons {
+.cookbooks .banner-buttons {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -135,12 +138,12 @@ body {
     left: 3%;
 }
 
-.banner-buttons a {
+.cookbooks .banner-buttons a {
     text-decoration: none;
     color: white;
 }
 
-.banner-button-a, .banner-button-b {             
+.cookbooks .banner-button-a, .banner-button-b {             
     padding: 20px; 
     background-color: #E64848;
     border: none;
@@ -150,17 +153,17 @@ body {
     color: white;
 }
 
-.banner-button-b {
+.cookbooks .banner-button-b {
     margin-left: 3%; 
 }
 
-.banner-button-a::before, .banner-button-b::before {
+.cookbooks .banner-button-a::before, .banner-button-b::before {
     content: "+";
     display: inline-block;
     margin-right: 5px;
 }
 
-.container {
+.cookbooks .container {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -169,7 +172,7 @@ body {
     margin-top: 2.5vh;
 }
 
-.card-container {
+.cookbooks .card-container {
     width: 90%;
     display: flex;
     flex-direction: row;
@@ -179,7 +182,7 @@ body {
     margin-left: 3%;
 }
 
-.card {
+.cookbooks .card {
     background-color: white;
     border-radius: 15px;
     height: 20vh;
@@ -194,7 +197,7 @@ body {
     margin-right: 3vw;
 }
 
-.card-image {
+.cookbooks .card-image {
     background-color: gray;
     height: 100%;
     width: 100%;
@@ -203,7 +206,7 @@ body {
     object-fit: cover;
 }
 
-.card-content {
+.cookbooks .card-content {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -211,7 +214,7 @@ body {
     align-items: center;/*flex-start;*/
 }
 
-.card-content h3 {
+.cookbooks .card-content h3 {
     font-size: 2vh;
     color: var(--main-red);
     font-weight: 700;
@@ -223,7 +226,7 @@ body {
 
 }
 
-.ellipsis {
+.cookbooks .ellipsis {
     cursor: pointer;
     display: inline-block;
     position: relative;
@@ -236,11 +239,11 @@ body {
     
 }
 
-.ellipsis:hover .popup {
+.cookbooks .ellipsis:hover .popup {
     display: block;
 }
 
-.popup {
+.cookbooks .popup {
     display: none;
     position: absolute;
     background-color: white;
@@ -254,21 +257,21 @@ body {
     width: 10vw;
 }
 
-.popup-icons {
+.cookbooks .popup-icons {
     height: 1.5vh;
     width: 1.5vh;
     background-color: lightgray;
     margin-left: 0.5vh;
 }
 
-.popup-line {
+.cookbooks .popup-line {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     margin-top: 1vh;
 }
 
-.popup::before {
+.cookbooks .popup::before {
     content: "";
     position: absolute;
     bottom: -1vh;
@@ -280,7 +283,7 @@ body {
     z-index: 10;
 }
 
-.popup a {
+.cookbooks .popup a {
     display: inline-block;;
     margin-bottom: 1vh;
     color: var(--main-red);
