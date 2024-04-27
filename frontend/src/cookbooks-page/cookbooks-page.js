@@ -23,6 +23,7 @@ const CookbooksPage = () => {
         });
     };
 
+    const username = sessionStorage.getItem('username');
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -74,10 +75,10 @@ const CookbooksPage = () => {
                 
                 <div className="navbar-links">
                     <div className="navbar-home">
-                        <a href="#">Home</a>
+                        <a href="/home">Home</a>
                     </div>
                     <div className="navbar-recipes">
-                        <a href="#">Recipes</a>
+                        <a href="/recipes">Recipes</a>
                         <div className="dropdown">
                             <div className="dropdown-entry-1">
                                 <div className="temp-icon"></div>
@@ -85,7 +86,7 @@ const CookbooksPage = () => {
                             </div>
                             <div className="dropdown-entry-2">
                                 <div className="temp-icon"></div>
-                                <a href="#">Create Recipe</a>
+                                <a href="/recipes/create">Create Recipe</a>
                             </div>
                         </div>
                     </div>
@@ -94,20 +95,20 @@ const CookbooksPage = () => {
                         <div className="dropdown">
                             <div className="dropdown-entry-1">
                                 <div className="temp-icon"></div>
-                                <a href="#">View<br/>Cookbooks</a>
+                                <a href="/cookbooks">View<br/>Cookbooks</a>
                             </div>
                             <div className="dropdown-entry-2">
                                 <div className="temp-icon"></div>
-                                <a href="#">Create<br/>Cookbook</a>
+                                <a href="/cookbooks/create">Create<br/>Cookbook</a>
                             </div>
                         </div>
                     </div>
                     <div className="navbar-profile">
-                        <a href="#">Profile</a>
+                        <a href={`/profile/${username}`}>Profile</a>
                         <div className="dropdown">
                             <div className="dropdown-entry-1">
                                 <div className="temp-icon"></div>
-                                <a href="#">View Profile</a>
+                                <a href={`/profile/${username}`}>View Profile</a>
                             </div>
                             <div className="dropdown-entry-2">
                                 <div className="temp-icon"></div>
