@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './view-recipes-page.css';
@@ -22,13 +22,18 @@ const ViewRecipesPage = () => {
         }
     };
 
+    useEffect(() => {
+        fetchRecipes();
+        console.log(recipes);
+    }, []);
+
     return  (
         <div className="view-recipe">
             <Navbar/>
             <div className="bg">
                 <div className="main-container">
                     <h2>All Recipes</h2>
-                    <div className="card-container">
+                    <div className="recipes">
                         {recipes && recipes.map(recipe => (
                             <div className="card">
                                 <div className="card-image">

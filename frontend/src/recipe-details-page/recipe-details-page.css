@@ -251,7 +251,7 @@ body {
 
 .star-rating {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     unicode-bidi: bidi-override; /* For RTL language support */
     align-items: center;
     justify-content: center;
@@ -268,7 +268,7 @@ body {
     color: lightgray;
   }
   
-  .star-rating input[type="radio"]:checked ~ label,
+  .star-rating input[type="radio"]:checked ~ label:not(:checked),
   .star-rating label:hover ~ label:not(:hover), /* Target siblings to the left */
   .star-rating label:hover {
     color: gold; 
