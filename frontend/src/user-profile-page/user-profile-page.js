@@ -65,7 +65,6 @@ const UserProfilePage = () => {
             }
             const data = await response.json();
             setProfile(data);
-            sessionStorage.setItem('username', username);
         } catch(error) {
             console.error(error);
         }
@@ -364,7 +363,7 @@ const UserProfilePage = () => {
                 </div>
 
                 <div className="profile created-recipes-text">
-                    <img alt="Spatula" className="profile spatula-icon"/>
+                    <img alt="Spatula" src="./spatula.svg" className="profile spatula-icon"/>
                     <h1>Created Recipes</h1>
                 </div>
 

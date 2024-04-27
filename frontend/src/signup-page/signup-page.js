@@ -72,6 +72,7 @@ const SignupPage = () => {
         ).then(
             data => {
                 console.log('Success: ', data)
+                sessionStorage.setItem('username', formData.username);
                 navigate(`/profile/${formData.username}`, {state: {data: newUser}}); 
             }
         ).catch(

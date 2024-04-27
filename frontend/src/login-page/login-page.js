@@ -51,6 +51,7 @@ const LoginPage = () => {
         ).then(
             data => {
                 console.log('Success: ', data)
+                sessionStorage.setItem('username', formData.username);
                 navigate('/dashboard')
             }
         ).catch(
