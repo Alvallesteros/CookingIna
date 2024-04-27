@@ -40,7 +40,7 @@ body {
 }
 
 .dashboard .logo {
-    width: 30%;
+    width: 15%;
     margin-right: 1vw;
 }
 
@@ -65,7 +65,6 @@ body {
     width: 95vw;
     border-radius: 45px;
     z-index: 0;
-    background-color: white;
     margin: 5em 0em 3em 0em;
     padding: 2em 0em 2em 0em;
 }
@@ -111,7 +110,7 @@ body {
     margin-left: 9%;
 }
 
-input[type='text'] {
+.dashboard input[type='text'] {
     border: 0.5px solid #8F8F8F;
     border-radius: 15px;
     padding-left: 5%;
@@ -163,14 +162,14 @@ input[type='text'] {
     font-size: 1.75vh;
 }
 
-label[for='first'], label[for='second'], label[for='third'] {
+.dashboard label[for='first'], label[for='second'], label[for='third'] {
     font-size: 1.75vh;
     font-weight: 700;
     color: var(--main-red);
     cursor: pointer;
 }
 
-label[for='first']::after, label[for='second']::after, label[for='third']::after {
+.dashboard label[for='first']::after, label[for='second']::after, label[for='third']::after {
     content: '>';
     position: absolute;
     right: 82%;
@@ -181,17 +180,17 @@ label[for='first']::after, label[for='second']::after, label[for='third']::after
     overflow: hidden;
 }
 
-input[type='radio'] {
+.dashboard input[type='radio'] {
     display: none;
 }
 
-input[type='radio']:checked + label + .content {
+.dashboard input[type='radio']:checked + label + .content {
     max-height: 100%;
 }
 
-input[type='radio']:checked + label[for='first']::after,
-input[type='radio']:checked + label[for='second']::after,
-input[type='radio']:checked + label[for='third']::after {
+.dashboard input[type='radio']:checked + label[for='first']::after,
+.dashboard input[type='radio']:checked + label[for='second']::after,
+.dashboard input[type='radio']:checked + label[for='third']::after {
     transform: rotate(90deg);
 }
 
