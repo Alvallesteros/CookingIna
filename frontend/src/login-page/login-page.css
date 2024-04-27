@@ -4,7 +4,7 @@
     --main-font: 'TT Norms Pro'
 }
 
-.login .bg {
+.bg {
     background-color: var(--main-bg-color);
     display: flex;
     position: absolute;
@@ -15,7 +15,7 @@
     z-index: -1;
 }
 
-.login .login_form-container {
+.login_form-container {
     background-color: white;
     display: flex;
     position: relative;
@@ -33,7 +33,7 @@
     z-index: 0;
 }
 
-.login .login_logo-container {
+.login_logo-container {
     background-color: var(--main-red);
     display: flex;
     align-items: center;
@@ -47,14 +47,14 @@
     z-index: 5;
 }
 
-.login .login_right-container {
+.login_right-container {
     display: block;
     width: 42%;
     z-index: 3;
     height: 100%
 }
 
-.login .login_shadow {
+.login_shadow {
     background-image: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0) 100%);
     position: absolute;
     height: 100%;
@@ -62,7 +62,7 @@
     z-index: 5;
 }
 
-.login .login_welcome {
+.login_welcome {
     width: 70%;
     height: 8%;
     background-image: linear-gradient(90deg, #D71D1D 0%, #E64848 100%);
@@ -81,7 +81,7 @@
         0px 189px 76px rgba(0, 0, 0, 0.01);
 }
 
-.login .login_button {
+.login_button {
     width: 74%;
     height: 1%;
     background-image: linear-gradient(90deg, #D71D1D 0%, #E64848 100%);
@@ -98,11 +98,11 @@
     cursor:pointer;
 }
 
-.login .login_logo {
+.login_logo {
     width: 68%;
 }
 
-.login .login_logo-container h1 {
+.login_logo-container h1 {
     font-family: "TT Norms Pro", sans-serif;
     font-weight: 800;
     color: white;
@@ -111,14 +111,14 @@
     margin-top: 0;
 }
 
-.login .login_welcome p {
+.login_welcome p {
     font-family: "TT Norms Pro", sans-serif;
     font-weight: 700;
     color: white;
     font-size: 4vh;
 }
 
-.login .login_button p {
+.login_button p {
     font-family: "TT Norms Pro", sans-serif;
     font-weight: 700;
     color: white;
@@ -126,7 +126,7 @@
     margin: auto;
 }
 
-.login .login_creds-container {
+.login_creds-container {
     position: relative;
     width: 100%;
     display: flex;
@@ -137,7 +137,7 @@
     margin-top: 25%;
 }
 
-.login .login_creds-container p {
+.login_creds-container p {
     font-family: 'TT Norms Pro', sans-serif;
     font-weight: 700;
     text-align: center;
@@ -145,7 +145,7 @@
     margin-top:  0;
 }
 
-.login .login_input {
+.login_input {
     border: none;
     border-bottom: 1.5px solid gray;
     margin-bottom: 5%;
@@ -159,14 +159,14 @@
     outline: none;
 }
 
-.login .login_input::placeholder {
+.login_input::placeholder {
     font-family: 'TT Norms Pro', sans-serif;
     font-size: 3vh;
     font-weight: 300;
     color: #000;
 }
 
-.login .login_sign-up-container {
+.login_sign-up-container {
     font-family: 'TT Norms Pro', sans-serif;
     background-color: rgba(255, 0, 0, 0.00);
     margin-top: 18%;
@@ -174,7 +174,7 @@
     text-align: center;
 }
 
-.login .login_sign-up-container p {
+.login_sign-up-container p {
     font-size: 2.5vh;
     font-weight: 300;
     line-height: 2vh;
@@ -182,18 +182,18 @@
     margin-top: 3%;
 }
 
-.login .login_sign-up-container a {
+.login_sign-up-container a {
     font-weight: 700;
     text-decoration: none;
     color: var(--main-red)
 }
 
-.login .login_sign-up-container a:hover {
+.login_sign-up-container a:hover {
     filter: brightness(0.5);
     transition: all 0.5s;
 }
 
-.login .login_error {
+.login_error {
     text-align: left;
     width: 75%;
     font-family: 'TT Norms Pro', sans-serif;
