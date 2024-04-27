@@ -19,7 +19,7 @@ body {
     z-index: -1;
 }
 
-.view-recipe .navbar {
+/* .view-recipe .navbar {
     background: var(--main-red);
     position: fixed;
     top: 0;
@@ -116,7 +116,7 @@ body {
     flex-direction: row;
     align-items: center;
     text-align: left;
-}
+} */
 
 .view-recipe .temp-icon {
     height: 2rem;

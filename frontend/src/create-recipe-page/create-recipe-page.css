@@ -18,7 +18,7 @@ body {
     align-items: center;
     z-index: -1;
 }
-
+/* 
 .create-recipe .navbar {
     background: var(--main-red);
     position: fixed;
@@ -116,7 +116,7 @@ body {
     flex-direction: row;
     align-items: center;
     text-align: left;
-}
+} */
 
 .create-recipe .temp-icon {
     height: 2rem;
@@ -125,6 +125,8 @@ body {
     margin-left: 6%;
     margin-right: 6%;
 }
+
+
 
 .create-recipe .main-container {
     background-color: white;

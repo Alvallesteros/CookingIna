@@ -56,6 +56,7 @@ class Ingredient(models.Model):
 class Cookbook(models.Model):
     cookbook_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255, default="Untitled Cookbook")
+    image = models.ImageField(upload_to='cookbook_images/', null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     author = models.ForeignKey('profiles.UserProfile', on_delete=models.CASCADE)
     recipes = models.ManyToManyField('Recipe', related_name='cookbooks')

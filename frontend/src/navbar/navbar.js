@@ -35,7 +35,7 @@ function Navbar() {
               <a href="/recipe">View Own Recipes</a>
             </div>
             <div className="dropdown-entry-2">
-              <a href="/recipe/create">Create Recipe</a>
+              <a href="/create-recipe">Create Recipe</a>
             </div>
           </div>
         </div>

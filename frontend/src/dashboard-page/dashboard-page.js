@@ -8,12 +8,14 @@ const DashboardPage = () => {
 
     const username = sessionStorage.getItem('username');
     const [recipes, setRecipes] = useState(null);
+    const [cookbooks, setCookbooks] = useState(null);
+    
 
     const fetchRecipes = async () => {
         try {
             const response = await fetch(`http://localhost:8000/api/recipes/`);
             if(!response.ok) {
-                throw new Error("Failed to fetch profile");
+                throw new Error("Failed to fetch recipes");
             }
             const data = await response.json();
             setRecipes(data);
@@ -21,10 +23,24 @@ const DashboardPage = () => {
             console.error(error);
         }
     };
+    const fetchCookbooks = async () => {
+        try {
+            const response = await fetch(`http://localhost:8000/api/cookbooks/`);
+            if(!response.ok) {
+                throw new Error("Failed to fetch cookbooks");
+            }
+            const data = await response.json();
+            setCookbooks(data);
+        } catch(error) {
+            console.error(error);
+        }
+    };
 
     useEffect(() => {
         fetchRecipes();
+        fetchCookbooks();
         console.log(recipes);
+        console.log(cookbooks);
     }, []);
    
     return  (
@@ -155,70 +171,20 @@ const DashboardPage = () => {
                 </div>
 
                 <div className="right-container">
-                    <h2>Recently Viewed Recipes</h2>
-                    <div className="recently-viewed-recipes">
-                        <div className="card">
-                            <div className="card-image"></div>
-                            <div className="card-content">
-                                <h3>Recipe Name</h3>
-                                <p>@username</p>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <div className="card-image"></div>
-                            <div className="card-content">
-                                <h3>Recipe Name</h3>
-                                <p>@username</p>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <div className="card-image"></div>
-                            <div className="card-content">
-                                <h3>Recipe Name</h3>
-                                <p>@username</p>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <div className="card-image"></div>
-                            <div className="card-content">
-                                <h3>Recipe Name</h3>
-                                <p>@username</p>
-                            </div>
-                        </div>
-                    </div>
-
                     <h2>Recently Created Cookbooks</h2>
                     <div className="recently-created-cookbooks">
-                        <div className="card">
-                            <div className="card-image"></div>
-                            <div className="card-content">
-                                <h3>Cookbook Name</h3>
-                                <p>@username</p>
+                    {cookbooks && cookbooks.map(cookbook => (
+                            <div className="card">
+                                <div className="card-image">
+                                    <img src={cookbook.image}></img>
+                                </div>
+                                <div className="card-content">
+                                    <h3><a href={`/cookbook/${cookbook.cookbook_id}`}>{cookbook.name}</a></h3>
+                                    <p>{cookbook.author.first_name}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div className="card">
-                            <div className="card-image"></div>
-                            <div className="card-content">
-                                <h3>Cookbook Name</h3>
-                                <p>@username</p>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <div className="card-image"></div>
-                            <div className="card-content">
-                                <h3>Cookbook Name</h3>
-                                <p>@username</p>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <div className="card-image"></div>
-                            <div className="card-content">
-                                <h3>Cookbook Name</h3>
-                                <p>@username</p>
-                            </div>
-                        </div>
+                        ))}
                     </div>
-
                     <h2>Recipes</h2>
                     <div className="recipes">
                         {recipes && recipes.map(recipe => (
@@ -227,8 +193,8 @@ const DashboardPage = () => {
                                     <img src={recipe.image}></img>
                                 </div>
                                 <div className="card-content">
-                                    <h3>{recipe.title}</h3>
-                                    <p>{recipe.author.first_name}</p>
+                                    <h3><a href={`/recipe/${recipe.recipe_id}`}>{recipe.title}</a></h3>
+                                    {/* <p>{recipe.author.first_name}</p> */}
                                 </div>
                             </div>
                         ))}

@@ -89,12 +89,12 @@ class CookbookCreateView(generics.CreateAPIView):
 class CookbookListView(generics.ListCreateAPIView):
     queryset = Cookbook.objects.all()
     serializer_class = CookbookSerializer
-    permission_classes = [permissions.IsAuthenticated]  # Users must be logged in
+    permission_classes = [permissions.AllowAny]  # Users must be logged in
 
 class CookbookDetailView(generics.RetrieveAPIView):
     queryset = Cookbook.objects.all()
     serializer_class = CookbookSerializer
-    permission_classes = [permissions.IsAuthenticated] 
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly] 
 
 class CookbookUpdateView(generics.UpdateAPIView):
     queryset = Cookbook.objects.all()

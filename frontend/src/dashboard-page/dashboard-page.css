@@ -11,7 +11,7 @@ body {
 
 .dashboard .bg {
     background-color: var(--main-bg-color);
-    height: auto;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -230,9 +230,9 @@ body {
 
 .dashboard .recently-viewed-recipes, .dashboard .recently-created-cookbooks, .dashboard .recipes {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
+    flex-wrap: wrap;
 }
 
 .dashboard .card {
@@ -246,6 +246,8 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: 1vh;
+    margin-bottom: 1vh;
+    flex: 0 0 25%;
 }
 
 .dashboard .card-image {
@@ -268,6 +270,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+    margin-bottom: 15px;
 }
 
 .dashboard .card-content h3 {
@@ -294,4 +297,7 @@ body {
     font-weight: 700;
     font-size: 2.5vh;
     align-self: flex-start;
+}
+a {
+    text-decoration: none;
 }
