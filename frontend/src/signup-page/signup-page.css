@@ -4,7 +4,7 @@
   --main-font: 'TT Norms Pro'
 }
 
-.bg {
+.signup .bg {
   background-color: var(--main-bg-color);
   display: flex;
   position: absolute;
@@ -15,7 +15,7 @@
   z-index: -1;
 }
 
-.signup_form-container {
+.signup .signup_form-container {
   background-color: white;
   display: flex;
   position: relative;
@@ -33,7 +33,7 @@
   z-index: 0;
 }
 
-.signup_logo-container {
+.signup .signup_logo-container {
   background-color: var(--main-red);
   display: flex;
   align-items: center;
@@ -47,14 +47,14 @@
   z-index: 5;
 }
 
-.signup_right-container {
+.signup .signup_right-container {
   display: block;
   width: 42%;
   z-index: 3;
   height: 100%;
 }
 
-.signup_shadow {
+.signup .signup_shadow {
   background-image: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0) 100%);
   position: absolute;
   height: 100%;
@@ -62,7 +62,7 @@
   z-index: 5;
 }
 
-.signup_button {
+.signup .signup_button {
   width: 74%;
   height: 1%;
   background-image: linear-gradient(90deg, #D71D1D 0%, #E64848 100%);
@@ -80,7 +80,7 @@
   cursor: pointer;
 }
 
-.signup_button::before {
+.signup .signup_button::before {
   content: '';
   position: absolute;
   top: 0;
@@ -91,11 +91,11 @@
   transition: background 0.5s ease; /* Add transition */
 }
 
-.signup_button:hover::before {
+.signup .signup_button:hover::before {
   background: rgba(0, 0, 0, 0.25); /* Semi-transparent black */
 }
 
-.signup_button p {
+.signup .signup_button p {
   font-family: "TT Norms Pro", sans-serif;
   font-weight: 700;
   color: white;
@@ -105,11 +105,11 @@
 }
 
 
-.signup_logo {
+.signup .signup_logo {
   width: 68%
 }
 
-.signup_logo-container h1 {
+.signup .signup_logo-container h1 {
     font-family: "TT Norms Pro", sans-serif;
     font-weight: 800;
     color: white;
@@ -118,7 +118,7 @@
     margin-top: 0;
 }
 
-.signup_creds-container {
+.signup .signup_creds-container {
   position: relative;
   width: 100%;
   display: flex;
@@ -129,7 +129,7 @@
   margin-top: 10%;
 }
 
-.signup_creds-container p {
+.signup .signup_creds-container p {
   font-family: 'TT Norms Pro', sans-serif;
   font-weight: 700;
   text-align: center;
@@ -137,7 +137,7 @@
   margin-top: 5%;
 }
 
-.signup_input {
+.signup .signup_input {
   border: none;
   border-bottom: 1.5px solid gray;
   margin-bottom: 5%;
@@ -153,23 +153,23 @@
   padding-left: 10px;
 }
 
-.signup_input::placeholder {
+.signup .signup_input::placeholder {
     font-family: 'TT Norms Pro', sans-serif;
     font-size: 3vh;
     font-weight: 300;
     color: #000;
 }
 
-.signup_input:hover {
+.signup .signup_input:hover {
     filter: brightness(0.95);
     transition: all 0.25s ease-in;
 }
 
-.signup_input.empty-field {
+.signup .signup_input.empty-field {
   border: 2px solid var(--main-red); 
 }
 
-.signup_login-container {
+.signup .signup_login-container {
     font-family: 'TT Norms Pro', sans-serif;
     background-color: rgba(255, 0, 0, 0.00);
     margin-top: 10%;
@@ -177,7 +177,7 @@
     text-align: center;
 }
 
-.signup_login-container p {
+.signup .signup_login-container p {
     font-size: 2.5vh;
     font-weight: 300;
     line-height: 2vh;
@@ -185,18 +185,18 @@
     margin-top: 3%;
 }
 
-.signup_login-container a {
+.signup .signup_login-container a {
     font-weight: 700;
     text-decoration: none;
     color: var(--main-red)
 }
 
-.signup_login-container a:hover {
+.signup .signup_login-container a:hover {
     filter: brightness(0.5);
     transition: all 0.5s;
 }
 
-.signup_error {
+.signup .signup_error {
   text-align: left;
   width: 75%;
   font-family: 'TT Norms Pro', sans-serif;
