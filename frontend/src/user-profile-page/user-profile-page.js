@@ -222,7 +222,7 @@ const UserProfilePage = () => {
                 
                 <div className="navbar-links">
                     <div className="navbar-home">
-                        <a href="/home">Home</a>
+                        <a href="/dashboard">Home</a>
                     </div>
                     <div className="navbar-recipes">
                         <a href="/recipes">Recipes</a>

@@ -23,7 +23,7 @@ const DashboardPage = () => {
         });
     };
 
-
+    const username = sessionStorage.getItem('username');
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -74,7 +74,7 @@ const DashboardPage = () => {
                 
                 <div className="navbar-links">
                     <div className="navbar-home">
-                        <a href="/home">Home</a>
+                        <a href="/dashboard">Home</a>
                     </div>
                     <div className="navbar-recipes">
                         <a href="/recipes">Recipes</a>
