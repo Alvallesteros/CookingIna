@@ -239,14 +239,13 @@ input[type='radio']:checked + label[for='third']::after {
 .dashboard .card {
     background-color: white;
     border-radius: 15px;
-    height: 20vh;
+    height: 25vh;
     width: calc(25% - 10px);
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
     margin-top: 1vh;
 }
 
@@ -257,6 +256,11 @@ input[type='radio']:checked + label[for='third']::after {
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     object-fit: cover;
+}
+
+.dashboard img {
+   height: 22vh;
+   width: 110%;
 }
 
 .dashboard .card-content {
@@ -275,6 +279,8 @@ input[type='radio']:checked + label[for='third']::after {
     text-align: left;
     margin-left: 5%;
     flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .dashboard .card-content p {

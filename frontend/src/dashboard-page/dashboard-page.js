@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './dashboard-page.css';
@@ -7,6 +7,25 @@ import Navbar from '../navbar/navbar';
 const DashboardPage = () => {
 
     const username = sessionStorage.getItem('username');
+    const [recipes, setRecipes] = useState(null);
+
+    const fetchRecipes = async () => {
+        try {
+            const response = await fetch(`http://localhost:8000/api/recipes/`);
+            if(!response.ok) {
+                throw new Error("Failed to fetch profile");
+            }
+            const data = await response.json();
+            setRecipes(data);
+        } catch(error) {
+            console.error(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchRecipes();
+        console.log(recipes);
+    }, []);
    
     return  (
         <div className="dashboard"><div className="bg">
@@ -202,34 +221,18 @@ const DashboardPage = () => {
 
                     <h2>Recipes</h2>
                     <div className="recipes">
-                        <div className="card">
-                            <div className="card-image"></div>
-                            <div className="card-content">
-                                <h3>Recipe Name</h3>
-                                <p>@username</p>
+                        {recipes && recipes.map(recipe => (
+                            <div className="card">
+                                <div className="card-image">
+                                    <img src={recipe.image}></img>
+                                </div>
+                                <div className="card-content">
+                                    <h3>{recipe.title}</h3>
+                                    <p>{recipe.author.first_name}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div className="card">
-                            <div className="card-image"></div>
-                            <div className="card-content">
-                                <h3>Recipe Name</h3>
-                                <p>@username</p>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <div className="card-image"></div>
-                            <div className="card-content">
-                                <h3>Recipe Name</h3>
-                                <p>@username</p>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <div className="card-image"></div>
-                            <div className="card-content">
-                                <h3>Recipe Name</h3>
-                                <p>@username</p>
-                            </div>
-                        </div>
+                        ))}
+                        
                     </div>
                 </div>
             </div>
