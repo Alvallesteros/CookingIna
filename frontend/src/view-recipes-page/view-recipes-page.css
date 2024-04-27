@@ -9,7 +9,7 @@ body {
     font-family: var(--main-font);
 }
 
-.bg {
+.view-recipe .bg {
     background-color: var(--main-bg-color);
     height: 120vh;
     width: 100vw;
@@ -19,7 +19,7 @@ body {
     z-index: -1;
 }
 
-.navbar {
+.view-recipe .navbar {
     background: var(--main-red);
     position: fixed;
     top: 0;
@@ -32,23 +32,23 @@ body {
     z-index: 10;
 }
 
-.logo-container {
+.view-recipe .logo-container {
     display: flex;
     align-items: center;
     padding-left: 2vw;
 }
 
-.logo {
+.view-recipe .logo {
     width: 30%;
     margin-right: 1vw;
 }
 
-.logo-text {
+.view-recipe .logo-text {
     color: white;
     font-weight: 900;
 }
 
-.navbar-links {
+.view-recipe .navbar-links {
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -56,11 +56,11 @@ body {
     margin-right: 1vw;
 }
 
-.navbar-links > div {
+.view-recipe .navbar-links > div {
     width: 25%;
 }
 
-.navbar-home, .navbar-recipes, .navbar-cookbooks, .navbar-profile {
+.view-recipe .navbar-home, .view-recipe .navbar-recipes, .view-recipe .navbar-cookbooks, .view-recipe .navbar-profile {
     height: 100%;
     padding-left: 2vw;
     padding-right: 2vw;
@@ -71,28 +71,28 @@ body {
     font-size: 2vh;
 }
 
-.navbar-recipes:hover, .navbar-cookbooks:hover, .navbar-profile:hover {
+.view-recipe .navbar-recipes:hover, .view-recipe .navbar-cookbooks:hover, .view-recipe .navbar-profile:hover {
     background-color: white;
     color: var(--main-red);
 }
 
-.navbar-home a, .navbar-recipes a, .navbar-cookbooks a, .navbar-profile a {
+.view-recipe .navbar-home a, .view-recipe .navbar-recipes a, .view-recipe .navbar-cookbooks a, .view-recipe .navbar-profile a {
     color: white;
     font-weight: 700;
     font-size: 2vh;
     text-decoration: none;
 }
 
-.navbar-recipes:hover a, .navbar-recipes:hover .dropdown a, .navbar-cookbooks:hover a, 
-.navbar-cookbooks:hover .dropdown a, .navbar-profile:hover a, .navbar-profile:hover .dropdown a {
+.view-recipe .navbar-recipes:hover a, .view-recipe .navbar-recipes:hover .dropdown a, .view-recipe .navbar-cookbooks:hover a, 
+.view-recipe .navbar-cookbooks:hover .dropdown a, .view-recipe .navbar-profile:hover a, .view-recipe .navbar-profile:hover .dropdown a {
     color: var(--main-red);
 }
 
-.dropdown {
+.view-recipe .dropdown {
     display: none;
 }
 
-.navbar-recipes:hover .dropdown, .navbar-cookbooks:hover .dropdown, .navbar-profile:hover .dropdown {
+.view-recipe .navbar-recipes:hover .dropdown, .view-recipe .navbar-cookbooks:hover .dropdown, .view-recipe .navbar-profile:hover .dropdown {
     display: block;
     position: absolute;
     background-color: white;
@@ -102,7 +102,7 @@ body {
     z-index: 100;
 }
 
-.dropdown a {
+.view-recipe .dropdown a {
     display: block;
     text-decoration: none;
     font-size: 2vh;
@@ -111,14 +111,14 @@ body {
     margin-bottom: 2vh;
 }
 
-.dropdown-entry-1, .dropdown-entry-2 {
+.view-recipe .dropdown-entry-1, .view-recipe .dropdown-entry-2 {
     display: flex;
     flex-direction: row;
     align-items: center;
     text-align: left;
 }
 
-.temp-icon {
+.view-recipe .temp-icon {
     height: 2rem;
     width: 2rem;
     background-color: lightgray;
@@ -126,7 +126,7 @@ body {
     margin-right: 6%;
 }
 
-.main-container {
+.view-recipe .main-container {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -136,7 +136,7 @@ body {
     margin-left: 0;
 }
 
-.main-container h2 {
+.view-recipe .main-container h2 {
     font-size: 4vh;
     color: var(--main-red);
     font-weight: 700;
@@ -147,7 +147,7 @@ body {
     margin-top: 8%;
 }
 
-.main-container .card-container {
+.view-recipe .main-container .card-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -155,7 +155,7 @@ body {
     width: 100%;
 }
 
-.card {
+.view-recipe .card {
     background-color: white;
     border-radius: 15px;
     height: 20vh;
@@ -171,7 +171,7 @@ body {
     margin-right: 5vw; */
 }
 
-.card-image {
+.view-recipe .card-image {
     background-color: gray;
     height: 100%;
     width: 100%;
@@ -180,7 +180,7 @@ body {
     object-fit: cover;
 }
 
-.card-content {
+.view-recipe .card-content {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -188,7 +188,7 @@ body {
     align-items: flex-start;
 }
 
-.card-content p {
+.view-recipe .card-content p {
     font-size: 1.5vh;
     font-weight: 300;
     align-self: flex-end;
@@ -196,7 +196,7 @@ body {
     margin-bottom: 5%;
 }
 
-.card-content h3 {
+.view-recipe .card-content h3 {
     color: var(--main-red);
     font-weight: 700;
     font-size: 2vh;

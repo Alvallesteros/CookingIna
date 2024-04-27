@@ -92,32 +92,6 @@ body {
     display: none;
 }
 
-.navbar-recipes:hover .dropdown, .navbar-cookbooks:hover .dropdown, .navbar-profile:hover .dropdown {
-    display: block;
-    position: absolute;
-    background-color: white;
-    width: 12.5%;
-    transform: translateX(-16%);
-    top: 100%;
-    z-index: 100;
-}
-
-.dropdown a {
-    display: block;
-    text-decoration: none;
-    font-size: 2vh;
-    color: var(--main-red);
-    margin-top: 2vh;
-    margin-bottom: 2vh;
-}
-
-.dropdown-entry-1, .dropdown-entry-2 {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    text-align: left;
-}
-
 .temp-icon {
     height: 2rem;
     width: 2rem;

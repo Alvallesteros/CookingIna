@@ -65,7 +65,7 @@ const ViewRecipesPage = () => {
     };
 
     return  (
-        <div className="bg">
+        <div className="view-recipe"><div className="bg">
             <nav className="navbar">
                 <div className="logo-container">
                     <img alt="Logo" className="logo"/>
@@ -207,7 +207,7 @@ const ViewRecipesPage = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div></div>
     );
 };
 

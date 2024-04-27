@@ -65,7 +65,7 @@ const CreateRecipePage = () => {
     };
 
     return  (
-        <div className="bg">
+        <div className="create-recipe"><div className="bg">
             <nav className="navbar">
                 <div className="logo-container">
                     <img alt="Logo" className="logo"/>
@@ -163,7 +163,7 @@ const CreateRecipePage = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div></div>
     );
 };
 

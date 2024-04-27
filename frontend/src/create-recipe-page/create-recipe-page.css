@@ -9,7 +9,7 @@ body {
     font-family: var(--main-font);
 }
 
-.bg {
+.create-recipe .bg {
     background-color: var(--main-bg-color);
     height: 100vh;
     width: 100vw;
@@ -19,7 +19,7 @@ body {
     z-index: -1;
 }
 
-.navbar {
+.create-recipe .navbar {
     background: var(--main-red);
     position: fixed;
     top: 0;
@@ -32,23 +32,23 @@ body {
     z-index: 10;
 }
 
-.logo-container {
+.create-recipe .logo-container {
     display: flex;
     align-items: center;
     padding-left: 2vw;
 }
 
-.logo {
+.create-recipe .logo {
     width: 30%;
     margin-right: 1vw;
 }
 
-.logo-text {
+.create-recipe .logo-text {
     color: white;
     font-weight: 900;
 }
 
-.navbar-links {
+.create-recipe .navbar-links {
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -56,11 +56,11 @@ body {
     margin-right: 1vw;
 }
 
-.navbar-links > div {
+.create-recipe .navbar-links > div {
     width: 25%;
 }
 
-.navbar-home, .navbar-recipes, .navbar-cookbooks, .navbar-profile {
+.create-recipe .navbar-home, .create-recipe .navbar-recipes, .create-recipe .navbar-cookbooks, .create-recipe .navbar-profile {
     height: 100%;
     padding-left: 2vw;
     padding-right: 2vw;
@@ -71,28 +71,28 @@ body {
     font-size: 2vh;
 }
 
-.navbar-recipes:hover, .navbar-cookbooks:hover, .navbar-profile:hover {
+.create-recipe .navbar-recipes:hover, .create-recipe .navbar-cookbooks:hover, .create-recipe .navbar-profile:hover {
     background-color: white;
     color: var(--main-red);
 }
 
-.navbar-home a, .navbar-recipes a, .navbar-cookbooks a, .navbar-profile a {
+.create-recipe .navbar-home a, .create-recipe .navbar-recipes a, .create-recipe .navbar-cookbooks a, .create-recipe .navbar-profile a {
     color: white;
     font-weight: 700;
     font-size: 2vh;
     text-decoration: none;
 }
 
-.navbar-recipes:hover a, .navbar-recipes:hover .dropdown a, .navbar-cookbooks:hover a, 
-.navbar-cookbooks:hover .dropdown a, .navbar-profile:hover a, .navbar-profile:hover .dropdown a {
+.create-recipe .navbar-recipes:hover a, .create-recipe .navbar-recipes:hover .create-recipe .dropdown a, .create-recipe .navbar-cookbooks:hover a, 
+.create-recipe .navbar-cookbooks:hover .create-recipe .dropdown a, .create-recipe .navbar-profile:hover a, .create-recipe .navbar-profile:hover .dropdown a {
     color: var(--main-red);
 }
 
-.dropdown {
+.create-recipe .dropdown {
     display: none;
 }
 
-.navbar-recipes:hover .dropdown, .navbar-cookbooks:hover .dropdown, .navbar-profile:hover .dropdown {
+.create-recipe .navbar-recipes:hover .dropdown, .create-recipe .navbar-cookbooks:hover .dropdown, .create-recipe .navbar-profile:hover .dropdown {
     display: block;
     position: absolute;
     background-color: white;
@@ -102,7 +102,7 @@ body {
     z-index: 100;
 }
 
-.dropdown a {
+.create-recipe .dropdown a {
     display: block;
     text-decoration: none;
     font-size: 2vh;
@@ -111,14 +111,14 @@ body {
     margin-bottom: 2vh;
 }
 
-.dropdown-entry-1, .dropdown-entry-2 {
+.create-recipe .dropdown-entry-1, .create-recipe .dropdown-entry-2 {
     display: flex;
     flex-direction: row;
     align-items: center;
     text-align: left;
 }
 
-.temp-icon {
+.create-recipe .temp-icon {
     height: 2rem;
     width: 2rem;
     background-color: lightgray;
@@ -126,7 +126,7 @@ body {
     margin-right: 6%;
 }
 
-.main-container {
+.create-recipe .main-container {
     background-color: white;
     border-radius: 45px;
     display: flex;
@@ -137,7 +137,7 @@ body {
     z-index: 0;
 }
 
-.shadow {
+.create-recipe .shadow {
     background-image: linear-gradient(270deg, #000 0%, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0) 100%);
     height: 100%;
     width: 5%;
@@ -145,36 +145,36 @@ body {
     left: 45%;
 }
 
-.left-container {
+.create-recipe .left-container {
     width: 50%;
     margin-top: 1.5vh;
     margin-left: 3vw;
 }
 
-.left-container h1 {
+.create-recipe .left-container h1 {
     color: var(--main-red);
     font-weight: 700;
 }
 
-.left-container label {
+.create-recipe .left-container label {
     font-weight: 500;
     padding-bottom: 1.5vh;
     font-size: 2.5vh;
 }
 
-.upload-and-difficulty {
+.create-recipe .upload-and-difficulty {
     font-weight: 500;
     display: flex;
     font-size: 2.5vh;
     margin-bottom: 2vh;
 }
 
-.upload {
+.create-recipe .upload {
     display: flex;
     flex-direction: column;
 }
 
-.upload-button {
+.create-recipe .upload-button {
     background-color: rgb(235, 235, 235);
     border-radius: 5px;
     padding-top: 13%;
@@ -186,16 +186,16 @@ body {
     cursor: pointer;
 }
 
-.difficulty {
+.create-recipe .difficulty {
     margin-left: 7vw;
 }
 
-.difficulty-icons {
+.create-recipe .difficulty-icons {
     display: flex;
     cursor: pointer;
 }
 
-.temp-spatula {
+.create-recipe .temp-spatula {
     background-color: rgb(235, 235, 235);
     height: 3.5vh;
     width: 3.5vh;
@@ -204,7 +204,7 @@ body {
     transform: translateX(-25%);
 }
 
-.left-container input[type=text] {
+.create-recipe .left-container input[type=text] {
     background-color: rgb(235, 235, 235);
     border: none;
     border-radius: 5px;
@@ -216,19 +216,19 @@ body {
     font-family: var(--main-font);
 }
 
-.right-container {
+.create-recipe .right-container {
     width: 50%;
     margin-top: 11vh;
     margin-left: 5vw;
 }
 
-.right-container label {
+.create-recipe .right-container label {
     font-weight: 500;
     padding-bottom: 1.5vh;
     font-size: 2.5vh;
 }
 
-.right-container input[type=text] {
+.create-recipe .right-container input[type=text] {
     background-color: rgb(235, 235, 235);
     border: none;
     border-radius: 5px;
@@ -240,7 +240,7 @@ body {
     font-family: var(--main-font);
 }
 
-.categories-button {
+.create-recipe .categories-button {
     cursor: pointer;
     font-size: 2vh;
     color: var(--main-red);
@@ -254,7 +254,7 @@ body {
     margin-top: 1vh;
 }
 
-.bottom-recipe-buttons {
+.create-recipe .bottom-recipe-buttons {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -262,7 +262,7 @@ body {
     margin-left: 3vw;
 }
 
-.discard-button, .save-button {
+.create-recipe .discard-button, .create-recipe .save-button {
     color: white;
     font-weight: 700;
     background-image: linear-gradient(90deg, #D71D1D 0%, #E64848 100%);
@@ -275,6 +275,6 @@ body {
     margin-top: 2vh;
 }
 
-.discard-button {
+.create-recipe .discard-button {
     margin-right: 3%;
 }
