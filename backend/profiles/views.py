@@ -36,7 +36,7 @@ class UserProfileUpdateView(generics.UpdateAPIView):
     # to update
     # permission_classes = [IsAuthenticated, IsOwner]
     queryset = UserProfile.objects
-    permission_classes = [IsAuthenticated, IsOwner]
+    permission_classes = [permissions.AllowAny]
     serializer_class = UserProfileSerializer
     
     def get_object(self):
@@ -48,7 +48,7 @@ class UserProfileUpdateView(generics.UpdateAPIView):
 
 class UserProfileDeleteView(generics.DestroyAPIView):
     queryset = UserProfile.objects
-    permission_classes = [IsAuthenticated, IsOwner, IsAdminUser]
+    permission_classes = [permissions.AllowAny]
     serializer_class = UserProfileSerializer
 
     def get_object(self):

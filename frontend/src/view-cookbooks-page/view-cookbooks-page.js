@@ -68,7 +68,7 @@ const ViewCookbooksPage = () => {
         <div class="bg">
             <nav class="navbar">
                 <div class="logo-container">
-                    <img alt="Logo" class="logo">
+                    <img alt="Logo" class="logo"/>
                     <span class="logo-text">CookingIna</span>
                 </div>
 
@@ -81,7 +81,7 @@ const ViewCookbooksPage = () => {
                         <div class="dropdown">
                             <div class="dropdown-entry-1">
                                 <div class="temp-icon"></div>
-                                <a href="#">View Own<br>Recipes</a>
+                                <a href="#">View Own<br/>Recipes</a>
                             </div>
                             <div class="dropdown-entry-2">
                                 <div class="temp-icon"></div>
@@ -94,11 +94,11 @@ const ViewCookbooksPage = () => {
                         <div class="dropdown">
                             <div class="dropdown-entry-1">
                                 <div class="temp-icon"></div>
-                                <a href="#">View<br>Cookbooks</a>
+                                <a href="#">View<br/>Cookbooks</a>
                             </div>
                             <div class="dropdown-entry-2">
                                 <div class="temp-icon"></div>
-                                <a href="#">Create<br>Cookbook</a>
+                                <a href="#">Create<br/>Cookbook</a>
                             </div>
                         </div>
                     </div>
