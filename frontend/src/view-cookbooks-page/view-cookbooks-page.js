@@ -4,65 +4,21 @@ import { useNavigate } from 'react-router-dom';
 import './view-cookbooks-page.css';
 
 const ViewCookbooksPage = () => {
-
-    const navigate = useNavigate();
-
-    const [credError, setCredError] = useState(false);
-
-    const [formData, setFormData] = useState({
-        username: '',
-        password: ''
-    });
-
-
-    const handleChange = (e) => {
-        const {name, value} = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
-    };
-
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        fetch('http://localhost:8000/api/login/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        }).then (
-            response => {
-                if (!response.ok) {
-                    return response.json().then(data => {
-                        // Check if the error response contains multiple errors
-                        if (data && typeof data === 'object' && Object.keys(data).length > 0) {
-                            const errorMessage = Object.values(data).join(', '); // Join multiple error messages
-                            throw new Error(errorMessage);
-                        } else {
-                            throw new Error('Unknown error occurred');
-                        }
-                    });
-                }        
-                return response.json();
-            }
-        ).then(
-            data => {
-                console.log('Success: ', data)
-                navigate('/dashboard')
-            }
-        ).catch(
-            error => {
-                console.error('Error: ', error);
-                const errorMessage = error.message;
-
-                const credError = /credentials/.test(errorMessage);
-                setCredError(credError);
-            }
-        );
-    };
+    const [cookbooks, setCookbooks] = useState([]);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await fetch('http://localhost:8000/api/cookbooks');
+          const data = await response.json();
+          setCookbooks(data);
+        } catch (error) {
+          console.error('Error fetching cookbooks:', error);
+        }
+      };
+  
+      fetchData();
+    }, []);
 
     return  (
         <div class="bg">
@@ -121,90 +77,15 @@ const ViewCookbooksPage = () => {
             <div class="main-container">
                 <h2>All Cookbooks</h2>
                 <div class="card-container">
-                    <div class="card">
-                        <div class="card-image"></div>
-                        <div class="card-content">
-                            <h3>Cookbook Name</h3>
-                            <p>@username</p>
+                    {cookbooks.map((cookbook) => (
+                        <div className="card" key={cookbook.id}> {/* Add a unique key */}
+                            <div className="card-image"></div>
+                            <div className="card-content">
+                                <h3>{cookbook.name}</h3> {/* Access data from the fetched object */}
+                                <p>@{cookbook.username}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-image"></div>
-                        <div class="card-content">
-                            <h3>Cookbook Name</h3>
-                            <p>@username</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-image"></div>
-                        <div class="card-content">
-                            <h3>Cookbook Name</h3>
-                            <p>@username</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-image"></div>
-                        <div class="card-content">
-                            <h3>Cookbook Name</h3>
-                            <p>@username</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-image"></div>
-                        <div class="card-content">
-                            <h3>Cookbook Name</h3>
-                            <p>@username</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-image"></div>
-                        <div class="card-content">
-                            <h3>Cookbook Name</h3>
-                            <p>@username</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-image"></div>
-                        <div class="card-content">
-                            <h3>Cookbook Name</h3>
-                            <p>@username</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-image"></div>
-                        <div class="card-content">
-                            <h3>Cookbook Name</h3>
-                            <p>@username</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-image"></div>
-                        <div class="card-content">
-                            <h3>Cookbook Name</h3>
-                            <p>@username</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-image"></div>
-                        <div class="card-content">
-                            <h3>Cookbook Name</h3>
-                            <p>@username</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-image"></div>
-                        <div class="card-content">
-                            <h3>Cookbook Name</h3>
-                            <p>@username</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-image"></div>
-                        <div class="card-content">
-                            <h3>Cookbook Name</h3>
-                            <p>@username</p>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         </div>
