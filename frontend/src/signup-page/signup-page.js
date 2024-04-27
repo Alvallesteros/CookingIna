@@ -96,10 +96,10 @@ const SignupPage = () => {
     };
 
     return  (
-        <div className = "bg">
+        <div className="signup"><div className = "bg">
             <div className = "signup_form-container">
                 <div class = "signup_logo-container">
-                    <img className = 'logo' src="/Logo.svg" alt = "Logo" />
+                    <img className = 'signup_logo' src="/Logo.svg" alt = "Logo" />
                     <h1>CookingIna</h1>
                 </div>
                 <div className = "signup_right-container">
@@ -169,7 +169,7 @@ const SignupPage = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div></div>
     );
 };
 

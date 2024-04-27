@@ -15,7 +15,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="logo-container">
-        <img alt="Logo" className="logo" src="your-logo-image.png" /> {/* Add image source */}
+        <img alt="Logo" className="logo" src="/Logo.svg" />
         <span className="logo-text">CookingIna</span>
       </div>
 

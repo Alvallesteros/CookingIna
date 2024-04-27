@@ -66,7 +66,7 @@ const LoginPage = () => {
     };
 
     return  (
-        <div className="bg">
+        <div className="login"><div className="bg">
             <div className="login_form-container">
                 <div className="login_logo-container">
                     <img className='login_logo' src="/Logo.svg" alt="Logo" />
@@ -112,7 +112,7 @@ const LoginPage = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div></div>
     );
 };
 
