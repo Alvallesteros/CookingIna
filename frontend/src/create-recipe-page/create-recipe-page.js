@@ -68,7 +68,7 @@ const CreateRecipePage = () => {
         <div className="bg">
             <nav className="navbar">
                 <div className="logo-container">
-                    <img alt="Logo" className="logo">
+                    <img alt="Logo" className="logo"/>
                     <span className="logo-text">CookingIna</span>
                 </div>
 
@@ -81,7 +81,7 @@ const CreateRecipePage = () => {
                         <div className="dropdown">
                             <div className="dropdown-entry-1">
                                 <div className="temp-icon"></div>
-                                <a href="#">View Own<br>Recipes</a>
+                                <a href="#">View Own<br/>Recipes</a>
                             </div>
                             <div className="dropdown-entry-2">
                                 <div className="temp-icon"></div>
@@ -94,11 +94,11 @@ const CreateRecipePage = () => {
                         <div className="dropdown">
                             <div className="dropdown-entry-1">
                                 <div className="temp-icon"></div>
-                                <a href="#">View<br>Cookbooks</a>
+                                <a href="#">View<br/>Cookbooks</a>
                             </div>
                             <div className="dropdown-entry-2">
                                 <div className="temp-icon"></div>
-                                <a href="#">Create<br>Cookbook</a>
+                                <a href="#">Create<br/>Cookbook</a>
                             </div>
                         </div>
                     </div>
@@ -121,10 +121,10 @@ const CreateRecipePage = () => {
             <div className="main-container">
                 <div className="left-container">
                     <h1>Create Recipe</h1>
-                    <label for="recipe-name">Recipe Name:<br></label>
-                    <input type="text" id="recipe-name" name="recipe-name" maxlength="15"><br>
-                    <label for="recipe-description">Recipe Description:<br></label>
-                    <input type="text" id="recipe-description" name="recipe-description" maxlength="180"><br>
+                    <label for="recipe-name">Recipe Name:<br/></label>
+                    <input type="text" id="recipe-name" name="recipe-name" maxlength="15"/><br/>
+                    <label for="recipe-description">Recipe Description:<br/></label>
+                    <input type="text" id="recipe-description" name="recipe-description" maxlength="180"/><br/>
                     
                     <div className="upload-and-difficulty">
                         <div className="upload">Recipe Image:
@@ -142,20 +142,20 @@ const CreateRecipePage = () => {
                         </div> 
                     </div>
 
-                    <label for="cooking-techniques">Cooking Techniques:<br></label>
-                    <input type="text" id="cooking-techniques" name="cooking-techniques" maxlength="100"><br>
-                    <label for="nutritional-information">Nutritional Information:<br></label>
-                    <input type="text" id="nutritional-information" name="nutritional-information" maxlength="200"><br>
+                    <label for="cooking-techniques">Cooking Techniques:<br/></label>
+                    <input type="text" id="cooking-techniques" name="cooking-techniques" maxlength="100"/><br/>
+                    <label for="nutritional-information">Nutritional Information:<br/></label>
+                    <input type="text" id="nutritional-information" name="nutritional-information" maxlength="200"/><br/>
                 </div>
 
                 <div className="shadow"></div>
 
                 <div className="right-container">
-                    <label for="ingredients">Ingredients:<br></label>
-                    <input type="text" id="ingredients" name="ingredients" maxlength="500"><br>
-                    <label for="preparation">Preparation:<br></label>
-                    <input type="text" id="preparation" name="preparation" maxlength="500"><br>
-                    <label className="categories">Categories:<br></label>
+                    <label for="ingredients">Ingredients:<br/></label>
+                    <input type="text" id="ingredients" name="ingredients" maxlength="500"/><br/>
+                    <label for="preparation">Preparation:<br/></label>
+                    <input type="text" id="preparation" name="preparation" maxlength="500"/><br/>
+                    <label className="categories">Categories:<br/></label>
                     <div className="categories-button">Select Categories</div>
                     <div className="bottom-recipe-buttons">
                         <div className="discard-button">Discard Recipe</div>

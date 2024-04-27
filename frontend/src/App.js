@@ -18,7 +18,7 @@ function App() {
         <Route path="/profile/:username" element={<UserProfilePage />} />
         <Route path="/cookbooks" element={<CookbooksPage />} />
         <Route path="/recipe/:recipeId" element={<RecipeDetailsPage />} />
-        <Routh path="/create-recipe" element={<CreateRecipePage />} />
+        <Route path="/create-recipe" element={<CreateRecipePage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
       </Routes>
     </Router>
