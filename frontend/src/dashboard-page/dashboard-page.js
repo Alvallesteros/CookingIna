@@ -117,53 +117,6 @@ const DashboardPage = () => {
                                     </div>
                                 </div>
                             </li>
-
-                            <li>
-                                <input type="radio" name="accordion" id="third"/>
-                                <label htmlFor="third">Ingredients</label>
-                                <div className="content">
-                                    <div className="subcontent">
-                                        <input type="checkbox" id="ingredients1" name="ingredients1" value="salt"/>
-                                        <label htmlFor="ingredients1">Salt</label><br/>
-                                    </div> 
-                                    <div className="subcontent">
-                                        <input type="checkbox" id="ingredients2" name="ingredients2" value="pepper"/>
-                                        <label htmlFor="ingredients2">Pepper</label><br/>
-                                    </div> 
-                                    <div className="subcontent">
-                                        <input type="checkbox" id="ingredients3" name="ingredients3" value="olive-oil"/>
-                                        <label htmlFor="ingredients3">Olive Oil</label><br/>
-                                    </div> 
-                                    <div className="subcontent">
-                                        <input type="checkbox" id="ingredients4" name="ingredients4" value="eggs"/>
-                                        <label htmlFor="ingredients4">Eggs</label><br/>
-                                    </div> 
-                                    <div className="subcontent">
-                                        <input type="checkbox" id="ingredients5" name="ingredients5" value="garlic"/>
-                                        <label htmlFor="ingredients5">Garlic</label><br/>
-                                    </div>
-                                    <div className="subcontent">
-                                        <input type="checkbox" id="ingredients6" name="ingredients6" value="onion"/>
-                                        <label htmlFor="ingredients6">Onion</label><br/>
-                                    </div>
-                                    <div className="subcontent">
-                                        <input type="checkbox" id="ingredients7" name="ingredients7" value="butter"/>
-                                        <label htmlFor="ingredients7">Butter</label><br/>
-                                    </div>
-                                    <div className="subcontent">
-                                        <input type="checkbox" id="ingredients8" name="ingredients8" value="all-purpose"/>
-                                        <label htmlFor="ingredients8">All-purpose Flour</label><br/>
-                                    </div>
-                                    <div className="subcontent">
-                                        <input type="checkbox" id="ingredients9" name="ingredients9" value="tomatoes"/>
-                                        <label htmlFor="ingredients9">Tomatoes</label><br/>
-                                    </div>
-                                    <div className="subcontent">
-                                        <input type="checkbox" id="ingredients10" name="ingredients10" value="gochujang"/>
-                                        <label htmlFor="ingredients10">Gochujang</label><br/>
-                                    </div>
-                                </div>
-                            </li>
                         </ul>
 
                         <div className="filter-button">Filter</div>

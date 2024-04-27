@@ -6,159 +6,44 @@ import Navbar from '../navbar/navbar';
 
 const ViewRecipesPage = () => {
 
-    const navigate = useNavigate();
+    const username = sessionStorage.getItem('username');
+    const [recipes, setRecipes] = useState(null);    
 
-    const [credError, setCredError] = useState(false);
-
-    const [formData, setFormData] = useState({
-        username: '',
-        password: ''
-    });
-
-
-    const handleChange = (e) => {
-        const {name, value} = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
-    };
-
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        fetch('http://localhost:8000/api/login/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        }).then (
-            response => {
-                if (!response.ok) {
-                    return response.json().then(data => {
-                        // Check if the error response contains multiple errors
-                        if (data && typeof data === 'object' && Object.keys(data).length > 0) {
-                            const errorMessage = Object.values(data).join(', '); // Join multiple error messages
-                            throw new Error(errorMessage);
-                        } else {
-                            throw new Error('Unknown error occurred');
-                        }
-                    });
-                }        
-                return response.json();
+    const fetchRecipes = async () => {
+        try {
+            const response = await fetch(`http://localhost:8000/api/recipes/`);
+            if(!response.ok) {
+                throw new Error("Failed to fetch recipes");
             }
-        ).then(
-            data => {
-                console.log('Success: ', data)
-                navigate('/dashboard')
-            }
-        ).catch(
-            error => {
-                console.error('Error: ', error);
-                const errorMessage = error.message;
-
-                const credError = /credentials/.test(errorMessage);
-                setCredError(credError);
-            }
-        );
+            const data = await response.json();
+            setRecipes(data);
+        } catch(error) {
+            console.error(error);
+        }
     };
 
     return  (
-        <div className="view-recipe"><div className="bg">
+        <div className="view-recipe">
             <Navbar/>
-            
-            <div className="main-container">
-                <h2>All Recipes</h2>
-                <div className="card-container">
-                    <div className="card">
-                        <div className="card-image"></div>
-                        <div className="card-content">
-                            <h3>Recipe Name</h3>
-                            <p>@username</p>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <div className="card-image"></div>
-                        <div className="card-content">
-                            <h3>Recipe Name</h3>
-                            <p>@username</p>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <div className="card-image"></div>
-                        <div className="card-content">
-                            <h3>Recipe Name</h3>
-                            <p>@username</p>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <div className="card-image"></div>
-                        <div className="card-content">
-                            <h3>Recipe Name</h3>
-                            <p>@username</p>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <div className="card-image"></div>
-                        <div className="card-content">
-                            <h3>Recipe Name</h3>
-                            <p>@username</p>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <div className="card-image"></div>
-                        <div className="card-content">
-                            <h3>Recipe Name</h3>
-                            <p>@username</p>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <div className="card-image"></div>
-                        <div className="card-content">
-                            <h3>Recipe Name</h3>
-                            <p>@username</p>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <div className="card-image"></div>
-                        <div className="card-content">
-                            <h3>Recipe Name</h3>
-                            <p>@username</p>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <div className="card-image"></div>
-                        <div className="card-content">
-                            <h3>Recipe Name</h3>
-                            <p>@username</p>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <div className="card-image"></div>
-                        <div className="card-content">
-                            <h3>Recipe Name</h3>
-                            <p>@username</p>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <div className="card-image"></div>
-                        <div className="card-content">
-                            <h3>Recipe Name</h3>
-                            <p>@username</p>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <div className="card-image"></div>
-                        <div className="card-content">
-                            <h3>Recipe Name</h3>
-                            <p>@username</p>
-                        </div>
+            <div className="bg">
+                <div className="main-container">
+                    <h2>All Recipes</h2>
+                    <div className="card-container">
+                        {recipes && recipes.map(recipe => (
+                            <div className="card">
+                                <div className="card-image">
+                                    <img src={recipe.image}></img>
+                                </div>
+                                <div className="card-content">
+                                    <h3><a href={`/recipe/${recipe.recipe_id}`}>{recipe.title}</a></h3>
+                                    {/* <p>{recipe.author.first_name}</p> */}
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
-        </div></div>
+        </div>
     );
 };
 
