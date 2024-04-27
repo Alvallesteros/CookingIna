@@ -64,6 +64,7 @@ const UserProfilePage = () => {
             }
             const data = await response.json();
             setProfile(data);
+            sessionStorage.setItem('username', username);
         } catch(error) {
             console.error(error);
         }

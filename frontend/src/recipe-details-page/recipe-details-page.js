@@ -14,7 +14,7 @@ const RecipeDetailsPage = () => {
     const [error, setError] = useState(null);
     const [rating, setRating] = useState(0);
     const [hoverValue, setHoverValue] = useState(undefined);
-
+    const username = sessionStorage.getItem('username');
     useEffect(() => {
         const fetchData = async () => {
             setIsLoading(true); 
@@ -57,16 +57,16 @@ const RecipeDetailsPage = () => {
                 </div>
                 <ul className="navbar-ul">
                     <li>
-                        <a href="#home">Home</a>
+                        <a href="home">Home</a>
                     </li>
                     <li>
-                        <a href="#recipes">Recipes</a>
+                        <a href="/recipes">Recipes</a>
                     </li>
                     <li>
-                        <a href="#cookbooks">Cookbooks</a>
+                        <a href="/cookbooks">Cookbooks</a>
                     </li>
                     <li>
-                        <a href="#profile">Profile</a>
+                        <a href={`/profile/${username}`}>Profile</a>
                     </li>
                 </ul>
             </nav>
