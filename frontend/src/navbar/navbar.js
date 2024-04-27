@@ -24,7 +24,6 @@ function Navbar() {
           <a href="/dashboard">Home</a>
         </div>
 
-        {/* Recipes Dropdown */}
         <div className="navbar-recipes"
              onMouseEnter={toggleRecipesDropdown} 
              onMouseLeave={toggleRecipesDropdown}
@@ -32,7 +31,7 @@ function Navbar() {
           <a href="#">Recipes</a>
           <div className={`dropdown ${recipesDropdownOpen ? 'open' : ''}`}> 
             <div className="dropdown-entry-1">
-              <a href="/recipe">View Own Recipes</a>
+              <a href="/recipe">View All Recipes</a>
             </div>
             <div className="dropdown-entry-2">
               <a href="/create-recipe">Create Recipe</a>
@@ -40,7 +39,6 @@ function Navbar() {
           </div>
         </div>
 
-        {/* Cookbooks Dropdown (Similar to Recipes) */}
         <div className="navbar-cookbooks" 
              onMouseEnter={toggleCookbooksDropdown} 
              onMouseLeave={toggleCookbooksDropdown}
@@ -56,20 +54,11 @@ function Navbar() {
           </div>
         </div>
 
-        {/* Profile Dropdown (Similar to Recipes) */}
         <div className="navbar-profile" 
              onMouseEnter={toggleProfileDropdown} 
              onMouseLeave={toggleProfileDropdown}
         >
-          <a href="#">Profile</a>
-          <div className={`dropdown ${profileDropdownOpen ? 'open' : ''}`}>
-            <div className="dropdown-entry-1">
-              <a href={`/profile/${username}`}>My Profile</a>
-            </div>
-            <div className="dropdown-entry-2">
-              <a href="">Logout</a>
-            </div>
-          </div>
+          <a href={`/profile/${username}`}>Profile</a>
         </div>
       </div>
     </nav>

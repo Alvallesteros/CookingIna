@@ -19,105 +19,6 @@ body {
     z-index: -1;
 }
 
-/* .view-recipe .navbar {
-    background: var(--main-red);
-    position: fixed;
-    top: 0;
-    height: 6vh;
-    width: 100vw;
-    font-family: var(--main-font);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 10;
-}
-
-.view-recipe .logo-container {
-    display: flex;
-    align-items: center;
-    padding-left: 2vw;
-}
-
-.view-recipe .logo {
-    width: 30%;
-    margin-right: 1vw;
-}
-
-.view-recipe .logo-text {
-    color: white;
-    font-weight: 900;
-}
-
-.view-recipe .navbar-links {
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    width: 50%;
-    margin-right: 1vw;
-}
-
-.view-recipe .navbar-links > div {
-    width: 25%;
-}
-
-.view-recipe .navbar-home, .view-recipe .navbar-recipes, .view-recipe .navbar-cookbooks, .view-recipe .navbar-profile {
-    height: 100%;
-    padding-left: 2vw;
-    padding-right: 2vw;
-    padding-top: 1.8vh;
-    text-align: center;
-    color: white;
-    font-weight: 700;
-    font-size: 2vh;
-}
-
-.view-recipe .navbar-recipes:hover, .view-recipe .navbar-cookbooks:hover, .view-recipe .navbar-profile:hover {
-    background-color: white;
-    color: var(--main-red);
-}
-
-.view-recipe .navbar-home a, .view-recipe .navbar-recipes a, .view-recipe .navbar-cookbooks a, .view-recipe .navbar-profile a {
-    color: white;
-    font-weight: 700;
-    font-size: 2vh;
-    text-decoration: none;
-}
-
-.view-recipe .navbar-recipes:hover a, .view-recipe .navbar-recipes:hover .dropdown a, .view-recipe .navbar-cookbooks:hover a, 
-.view-recipe .navbar-cookbooks:hover .dropdown a, .view-recipe .navbar-profile:hover a, .view-recipe .navbar-profile:hover .dropdown a {
-    color: var(--main-red);
-}
-
-.view-recipe .dropdown {
-    display: none;
-}
-
-.view-recipe .navbar-recipes:hover .dropdown, .view-recipe .navbar-cookbooks:hover .dropdown, .view-recipe .navbar-profile:hover .dropdown {
-    display: block;
-    position: absolute;
-    background-color: white;
-    width: 12.5%;
-    transform: translateX(-16%);
-    top: 100%;
-    z-index: 100;
-}
-
-.view-recipe .dropdown a {
-    display: block;
-    text-decoration: none;
-    font-size: 2vh;
-    color: var(--main-red);
-    margin-top: 2vh;
-    margin-bottom: 2vh;
-}
-
-.view-recipe .dropdown-entry-1, .view-recipe .dropdown-entry-2 {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    text-align: left;
-} */
-
 .view-recipe .temp-icon {
     height: 2rem;
     width: 2rem;
@@ -125,16 +26,6 @@ body {
     margin-left: 6%;
     margin-right: 6%;
 }
-
-/* .view-recipe .main-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-left: 0;
-} */
 
 .view-recipe .main-container {
     width: 100%;
@@ -151,69 +42,9 @@ body {
     font-weight: 700;
     align-self: flex-start;
     text-align: left;
-    margin-left: 5%;
     flex: 1;
     margin-top: 8%;
 }
-
-/* .view-recipe .main-container .card-container {
-    display: flex;
-    align-items: flex-start;
-    width: 100%;
-    flex-wrap: wrap;
-} */
-
-/* .view-recipe .card {
-    background-color: white;
-    border-radius: 15px;
-    height: 25vh;
-    width: calc(25% - 10px);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
-    flex: 0 0 25%;
-}
-
-.view-recipe .card-image {
-    background-color: gray;
-    height: 100%;
-    width: 100%;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    object-fit: cover;
-}
-
-.view-recipe .card-content {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 15px;
-}
-
-.view-recipe .card-content p {
-    font-size: 1.5vh;
-    font-weight: 300;
-    align-self: flex-end;
-    margin-left: 5%;
-}
-
-.view-recipe .card-content h3 {
-    font-size: 1.5vh;
-    color: var(--main-red);
-    font-weight: 700;
-    align-self: flex-start;
-    text-align: left;
-    margin-left: 5%;
-    flex: 1;
-    overflow: hidden;
-    text-overflow: ellipsis;
-} */
 
 .view-recipe .recently-viewed-recipes, .view-recipe .recently-created-cookbooks, .view-recipe .recipes {
     display: flex;

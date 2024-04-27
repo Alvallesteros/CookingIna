@@ -54,7 +54,7 @@ const DashboardPage = () => {
                         <div className="input-container">
                             <input type="text" id="search-recipe" name="search-recipe" maxLength="20" placeholder="Search Recipe"/>
                         </div>
-                        <p>View All Recipes</p>
+                        <p><a href="/recipe">View All Recipes</a></p>
                     </div>
 
                     <div className="filter-by">
@@ -147,7 +147,7 @@ const DashboardPage = () => {
                                 </div>
                                 <div className="card-content">
                                     <h3><a href={`/recipe/${recipe.recipe_id}`}>{recipe.title}</a></h3>
-                                    {/* <p>{recipe.author.first_name}</p> */}
+                                    <p>{recipe.author.first_name}</p>
                                 </div>
                             </div>
                         ))}

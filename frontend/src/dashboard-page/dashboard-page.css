@@ -291,7 +291,8 @@ body {
     font-size: 1.5vh;
     font-weight: 300;
     align-self: flex-end;
-    margin-left: 5%;
+    margin-right: 5%;
+    /* margin-left: 5%; */
 }
 
 .dashboard .right-container h2 {
