@@ -66,51 +66,51 @@ const DashboardPage = () => {
 
     return  (
         <div class="bg">
-            <nav class="navbar">
-                <div class="logo-container">
-                    <img alt="Logo" class="logo"/>
-                    <span class="logo-text">CookingIna</span>
+            <nav className="navbar">
+                <div className="logo-container">
+                    <img alt="Logo" className="logo"/>
+                    <span className="logo-text">CookingIna</span>
                 </div>
-
-                <div class="navbar-links">
-                    <div class="navbar-home">
-                        <a href="#">Home</a>
+                
+                <div className="navbar-links">
+                    <div className="navbar-home">
+                        <a href="/home">Home</a>
                     </div>
-                    <div class="navbar-recipes">
-                        <a href="#">Recipes</a>
-                        <div class="dropdown">
-                            <div class="dropdown-entry-1">
-                                <div class="temp-icon"></div>
+                    <div className="navbar-recipes">
+                        <a href="/recipes">Recipes</a>
+                        <div className="dropdown">
+                            <div className="dropdown-entry-1">
+                                <div className="temp-icon"></div>
                                 <a href="#">View Own<br/>Recipes</a>
                             </div>
-                            <div class="dropdown-entry-2">
-                                <div class="temp-icon"></div>
-                                <a href="#">Create Recipe</a>
+                            <div className="dropdown-entry-2">
+                                <div className="temp-icon"></div>
+                                <a href="/recipes/create">Create Recipe</a>
                             </div>
                         </div>
                     </div>
-                    <div class="navbar-cookbooks">
+                    <div className="navbar-cookbooks">
                         <a href="#">Cookbooks</a>
-                        <div class="dropdown">
-                            <div class="dropdown-entry-1">
-                                <div class="temp-icon"></div>
-                                <a href="#">View<br/>Cookbooks</a>
+                        <div className="dropdown">
+                            <div className="dropdown-entry-1">
+                                <div className="temp-icon"></div>
+                                <a href="/cookbooks">View<br/>Cookbooks</a>
                             </div>
-                            <div class="dropdown-entry-2">
-                                <div class="temp-icon"></div>
-                                <a href="#">Create<br/>Cookbook</a>
+                            <div className="dropdown-entry-2">
+                                <div className="temp-icon"></div>
+                                <a href="/cookbooks/create">Create<br/>Cookbook</a>
                             </div>
                         </div>
                     </div>
-                    <div class="navbar-profile">
-                        <a href="#">Profile</a>
-                        <div class="dropdown">
-                            <div class="dropdown-entry-1">
-                                <div class="temp-icon"></div>
-                                <a href="#">View Profile</a>
+                    <div className="navbar-profile">
+                        <a href={`/profile/${username}`}>Profile</a>
+                        <div className="dropdown">
+                            <div className="dropdown-entry-1">
+                                <div className="temp-icon"></div>
+                                <a href={`/profile/${username}`}>View Profile</a>
                             </div>
-                            <div class="dropdown-entry-2">
-                                <div class="temp-icon"></div>
+                            <div className="dropdown-entry-2">
+                                <div className="temp-icon"></div>
                                 <a href="#">Logout</a>
                             </div>
                         </div>
