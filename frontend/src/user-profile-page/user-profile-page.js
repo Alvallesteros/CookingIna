@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import './user-profile-page.css';
 import UploadPhoto from './uploadPhoto';
 import ConfirmationModal from './confirmation';
+import Navbar from '../navbar/navbar';
 
 const UserProfilePage = () => {
 
@@ -214,57 +215,7 @@ const UserProfilePage = () => {
                     onCancel={() => setConfirmModal(false)}
                     onConfirm={handleDelete}
                 />
-                <nav className="navbar">
-                <div className="logo-container">
-                    <img alt="Logo" className="logo"/>
-                    <span className="logo-text">CookingIna</span>
-                </div>
-                
-                <div className="navbar-links">
-                    <div className="navbar-home">
-                        <a href="/dashboard">Home</a>
-                    </div>
-                    <div className="navbar-recipes">
-                        <a href="/recipes">Recipes</a>
-                        <div className="dropdown">
-                            <div className="dropdown-entry-1">
-                                <div className="temp-icon"></div>
-                                <a href="#">View Own<br/>Recipes</a>
-                            </div>
-                            <div className="dropdown-entry-2">
-                                <div className="temp-icon"></div>
-                                <a href="/recipes/create">Create Recipe</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="navbar-cookbooks">
-                        <a href="#">Cookbooks</a>
-                        <div className="dropdown">
-                            <div className="dropdown-entry-1">
-                                <div className="temp-icon"></div>
-                                <a href="/cookbooks">View<br/>Cookbooks</a>
-                            </div>
-                            <div className="dropdown-entry-2">
-                                <div className="temp-icon"></div>
-                                <a href="/cookbooks/create">Create<br/>Cookbook</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="navbar-profile">
-                        <a href={`/profile/${username}`}>Profile</a>
-                        <div className="dropdown">
-                            <div className="dropdown-entry-1">
-                                <div className="temp-icon"></div>
-                                <a href={`/profile/${username}`}>View Profile</a>
-                            </div>
-                            <div className="dropdown-entry-2">
-                                <div className="temp-icon"></div>
-                                <a href="#">Logout</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+                <Navbar/>
 
                 <div className="profile red-rectangle"></div>
 

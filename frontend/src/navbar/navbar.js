@@ -11,7 +11,7 @@ function Navbar() {
   const toggleRecipesDropdown = () => setRecipesDropdownOpen(!recipesDropdownOpen);
   const toggleCookbooksDropdown = () => setCookbooksDropdownOpen(!cookbooksDropdownOpen);
   const toggleProfileDropdown = () => setProfileDropdownOpen(!profileDropdownOpen);
-
+  const username = sessionStorage.getItem('username');
   return (
     <nav className="navbar">
       <div className="logo-container">
@@ -21,7 +21,7 @@ function Navbar() {
 
       <div className="navbar-links">
         <div className="navbar-home">
-          <a href="#">Home</a>
+          <a href="/dashboard">Home</a>
         </div>
 
         {/* Recipes Dropdown */}
@@ -32,10 +32,10 @@ function Navbar() {
           <a href="#">Recipes</a>
           <div className={`dropdown ${recipesDropdownOpen ? 'open' : ''}`}> 
             <div className="dropdown-entry-1">
-              <a href="#">View Own Recipes</a>
+              <a href="/recipe">View Own Recipes</a>
             </div>
             <div className="dropdown-entry-2">
-              <a href="#">Create Recipe</a>
+              <a href="/recipe/create">Create Recipe</a>
             </div>
           </div>
         </div>
@@ -48,7 +48,7 @@ function Navbar() {
           <a href="#">Cookbooks</a>
           <div className={`dropdown ${cookbooksDropdownOpen ? 'open' : ''}`}>
             <div className="dropdown-entry-1">
-                <a href="#">View Cookbooks</a>
+                <a href="/cookbooks">View Cookbooks</a>
                 </div>
             <div className="dropdown-entry-2">
                 <a href="#">Create Cookbooks</a>
@@ -64,10 +64,10 @@ function Navbar() {
           <a href="#">Profile</a>
           <div className={`dropdown ${profileDropdownOpen ? 'open' : ''}`}>
             <div className="dropdown-entry-1">
-              <a href="#">My Profile</a>
+              <a href={`/profile/${username}`}>My Profile</a>
             </div>
             <div className="dropdown-entry-2">
-              <a href="#">Logout</a>
+              <a href="">Logout</a>
             </div>
           </div>
         </div>

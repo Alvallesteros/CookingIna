@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './view-recipes-page.css';
+import Navbar from '../navbar/navbar';
 
 const ViewRecipesPage = () => {
 
@@ -66,57 +67,7 @@ const ViewRecipesPage = () => {
 
     return  (
         <div className="view-recipe"><div className="bg">
-            <nav className="navbar">
-                <div className="logo-container">
-                    <img alt="Logo" className="logo"/>
-                    <span className="logo-text">CookingIna</span>
-                </div>
-
-                <div className="navbar-links">
-                    <div className="navbar-home">
-                        <a href="#">Home</a>
-                    </div>
-                    <div className="navbar-recipes">
-                        <a href="#">Recipes</a>
-                        <div className="dropdown">
-                            <div className="dropdown-entry-1">
-                                <div className="temp-icon"></div>
-                                <a href="#">View Own<br/>Recipes</a>
-                            </div>
-                            <div className="dropdown-entry-2">
-                                <div className="temp-icon"></div>
-                                <a href="#">Create Recipe</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="navbar-cookbooks">
-                        <a href="#">Cookbooks</a>
-                        <div className="dropdown">
-                            <div className="dropdown-entry-1">
-                                <div className="temp-icon"></div>
-                                <a href="#">View<br/>Cookbooks</a>
-                            </div>
-                            <div className="dropdown-entry-2">
-                                <div className="temp-icon"></div>
-                                <a href="#">Create<br/>Cookbook</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="navbar-profile">
-                        <a href="#">Profile</a>
-                        <div className="dropdown">
-                            <div className="dropdown-entry-1">
-                                <div className="temp-icon"></div>
-                                <a href="#">View Profile</a>
-                            </div>
-                            <div className="dropdown-entry-2">
-                                <div className="temp-icon"></div>
-                                <a href="#">Logout</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+            <Navbar/>
             
             <div className="main-container">
                 <h2>All Recipes</h2>
